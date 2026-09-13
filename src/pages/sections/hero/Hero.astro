@@ -1,9 +1,14 @@
 ---
-import ArrowDown from "@/assets/hero/arrow-down.svg";
 import IsaacFrame from "@/assets/hero/isaac-frame.png";
 import LogoMark from "@/assets/hero/logo.svg";
-import HeroVectors from "@/assets/hero/vectors.svg";
+import { Icon } from 'astro-icon/components';
 import { Image } from "astro:assets";
+
+const skills = [
+  { name: "logos:python", label: "Python" },
+  { name: "devicon:ruby", label: "Ruby" },
+  { name: "skill-icons:typescript", label: "TypeScript" },
+];
 ---
 
 <section class="relative min-h-svh overflow-hidden bg-primary text-white">
@@ -20,49 +25,25 @@ import { Image } from "astro:assets";
   </header>
 
 
-  <!-- Mobile header -->
-  <header class="flex flex-row block p-8 items-center z-30 lg:hidden">
-    <Image src={LogoMark} alt="Isaac Machado — monograma I" width={60} height={56} class="h-11 w-auto" />
-    <span class="font-logo text-4xl leading-none text-neutral-strong select-none">saac</span>
-  </header>
-
   <!-- ===== Desktop: canvas absoluto (posições = artboard 1920x1080) ===== -->
   <main class="absolute inset-0 hidden lg:block">
     <p class="absolute left-[4.27%] top-[40.65%] z-20 text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono text-neutral">
       01/
     </p>
 
-    <h1 class="absolute left-[4.27%] top-[42.3%] z-20  text-[clamp(2.25rem,3.75vw,4.5rem)] leading-[1.2] font-bold tracking-[-0.03em] whitespace-nowrap font-kabel">
+    <h1 class="absolute left-[4.27%] top-[42.3%] z-20 text-[clamp(2.25rem,3.75vw,4.5rem)] leading-[1.2] font-bold tracking-[-0.03em] whitespace-nowrap font-fraunces">
       Full-Stack Developer
     </h1>
 
-    <!-- CTA row — botão branco 245x60 em (134, 571) + link em (413, 585) -->
-    <div class="absolute left-[7%] top-[52.9%] z-20 flex items-center gap-1">
+    <!-- CTA Desktop "Conversar comigo" — Figma (134, 571, 245x60) -->
+    <div class="absolute left-[7%] top-[52.9%] z-20 flex items-center gap-4">
       <a
         href="#contato"
-        class="inline-flex h-[clamp(48px,5.56vh,60px)] items-center justify-center rounded-[12px] bg-tertiary text-[clamp(1.125rem,1.25vw,1.5rem)]  text-ink transition-colors hover:bg-neutral-strong px-8 py-4 font-kabel"
+        class="inline-flex h-[clamp(48px,5.56vh,60px)] items-center justify-center rounded-[12px] bg-tertiary px-8 py-4 text-[clamp(1.125rem,1.25vw,1.5rem)] font-bold text-ink transition-all hover:bg-neutral-strong active:scale-95 shadow-md select-none font-space-grotesk"
       >
         Conversar comigo
       </a>
-      <a href="#projetos" class="text-[clamp(1.125rem,1.25vw,1.5rem)]  whitespace-nowrap px-8 py-4 font-kabel">
-        Visualizar projetos
-      </a>
     </div>
-
-
-    <a href="#sobre" class="absolute left-[55%] top-[60%] z-20 text-[clamp(1.125rem,1.25vw,1.5rem)] font-semibold whitespace-nowrap font-kabel">
-      Quem eu sou?
-    </a>
-
-    <!-- Seta -->
-    <Image
-      src={HeroVectors}
-      alt=""
-      aria-hidden="true"
-      width={259}
-      height={145}
-      class="pointer-events-none absolute top-[44.4%] left-[40.4%] z-10 w-[13.5vw] min-w-[160px]"
-    />
 
     <div class="absolute top-[17.13%] right-[4.22%] bottom-[-16.7%] z-10 w-[38.75%] overflow-hidden">
       <Image
@@ -77,61 +58,57 @@ import { Image } from "astro:assets";
     <!-- PRINCIPAIS HABILIDADES-->
     <div class="absolute left-[6.72%] top-[79.7%] z-20 flex w-[34.2vw] flex-col items-center">
       <p class="text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono">Principais habilidades</p>
-      <div class="mt-[clamp(0.5rem,1.46vw,1.55rem)] flex gap-[4.9vw]">
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
+      <div class="mt-[clamp(0.5rem,1.46vw,1.55rem)] flex gap-[5.5vw]">
+        {skills.map((skill) => (
+          <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral flex flex-col items-center justify-center gap-[0.4vw] text-ink p-2 select-none shadow-sm">
+            <Icon name={skill.name} class="w-[3.5vw] h-[3.5vw]" />
+            <span class="font-space-mono text-[clamp(0.6rem,0.68vw,0.8rem)] font-bold tracking-tight text-center leading-tight">
+              {skill.label}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
-
-    <!-- CONTINUE  -->
-    <a href="#experiencia" class="absolute left-[48.13%] top-[93.7%] z-20 flex -translate-x-1/2 flex-col items-center gap-[6px]">
-      <p class="text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase">Continue</p>
-      <Image src={ArrowDown} alt="" aria-hidden="true" width={24} height={24} class="h-[clamp(18px,1.25vw,24px)] w-auto" />
-    </a>
   </main>
 
-  <!-- ===== Mobile: fluxo empilhado ===== -->
-  <main class="flex flex-col px-6 pt-8 lg:hidden">
-    <p class="text-xs font-semibold tracking-[0.08em] uppercase font-space-mono text-neutral">01/</p>
-    <h1 class="mt-4 font-kabel text-[2.5rem] leading-[1.2] font-bold tracking-[-0.03em] uppercase">
-      Full-Stack Developer
-    </h1>
-    <div class="mt-8 flex flex-wrap items-center gap-4">
-      <a
-        href="#contato"
-        class="inline-flex items-center justify-center rounded-[12px] bg-tertiary text-lg font-semibold text-ink transition-colors hover:bg-neutral-strong px-8 py-4"
-      >
-        Conversar comigo
-      </a>
-      <a href="#projetos" class="inline-flex h-[52px] items-center text-lg font-semibold whitespace-nowrap">
-        Visualizar projetos
-      </a>
-    </div>
-    <a href="#sobre" class="mt-4 text-lg font-semibold font-kabel">Quem eu sou?</a>
+  <!-- ===== Mobile: Hero layout conforme Figma 202:38 ===== -->
+  <div class="relative flex flex-col h-svh min-h-[640px] w-full overflow-hidden lg:hidden">
+    <!-- Plano rotacionado 31.07° no mobile (secondary #1b1820) — origin (50%, 30%) conforme Figma node 202:40 -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute left-[50%] top-[30%] z-0 h-[65vh] min-h-[420px] w-[240vw] origin-top-left rotate-[31.07deg] bg-secondary"
+    ></div>
 
-    <div class="relative mx-auto mt-8 aspect-[744/895] w-full max-w-md overflow-hidden rounded-[20px]">
-      <Image
-        src={IsaacFrame}
-        alt="Retrato de Isaac Machado"
-        width={1478}
-        height={2137}
-        class="absolute inset-0 h-full w-full object-cover object-top"
-      />
-    </div>
+    <!-- Mobile header -->
+    <header class="relative z-30 flex flex-row px-6 py-6 items-center">
+      <Image src={LogoMark} alt="Isaac Machado — monograma I" width={60} height={56} class="h-10 sm:h-11 w-auto" />
+      <span class="font-logo text-3xl sm:text-4xl leading-none text-neutral-strong select-none">saac</span>
+    </header>
 
-    <div class="mt-10 flex flex-col items-center">
-      <p class="text-xs font-semibold tracking-[0.08em] uppercase">Principais habilidades</p>
-      <div class="mt-4 flex gap-4">
-        <div class="aspect-[156/137] w-[100px] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[100px] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[100px] rounded-[20px] bg-neutral"></div>
+    <!-- Retrato Isaac Machado recortado à direita -->
+    <Image
+      src={IsaacFrame}
+      alt="Retrato de Isaac Machado"
+      width={1478}
+      height={2137}
+      priority
+      class="pointer-events-none absolute -right-[18%] sm:-right-[8%] bottom-0 z-10 h-[80vh] max-h-[850px] w-auto max-w-none object-cover object-top select-none"
+    />
+
+    <!-- Conteúdo principal (Título + CTA) -->
+    <main class="relative z-20 flex flex-col justify-start px-6 sm:px-8 pt-[12vh] sm:pt-[14vh]">
+      <h1 class="font-space-grotesk text-[2rem] sm:text-[2.25rem] font-bold tracking-[-0.03em] leading-[1.2] text-white max-w-[240px] sm:max-w-[280px]">
+        Full-Stack<br />Developer
+      </h1>
+
+      <div class="mt-6 sm:mt-7">
+        <a
+          href="#contato"
+          class="inline-flex h-[42px] items-center justify-center rounded-full bg-tertiary px-6 text-base font-bold text-ink transition-all hover:bg-neutral-strong active:scale-95 font-space-grotesk shadow-md select-none"
+        >
+          Conversar comigo
+        </a>
       </div>
-    </div>
-
-    <a href="#experiencia" class="mt-10 mb-6 flex flex-col items-center gap-1.5 self-center">
-      <p class="text-xs font-semibold tracking-[0.08em] uppercase">Continue</p>
-      <Image src={ArrowDown} alt="" aria-hidden="true" width={24} height={24} class="h-5 w-5" />
-    </a>
-  </main>
+    </main>
+  </div>
 </section>

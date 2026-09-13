@@ -21,16 +21,40 @@
     "@fontsource/inter": "^5.3.0",
     "@fontsource/mea-culpa": "^5.3.0",
     "@fontsource/space-mono": "^5.3.0",
+    "@iconify-json/akar-icons": "^1.2.7",
+    "@iconify-json/ant-design": "^1.2.9",
+    "@iconify-json/arcticons": "^1.2.57",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "astro": "^7.2.10",
+    "astro-icon": "^1.2.0",
+    "clsx": "^2.1.1",
     "lucide-react": "^1.39.0",
+    "motion": "^13.2.0",
     "react": "^19.2.8",
+    "react-activity-calendar": "^3.2.1",
     "react-dom": "^19.2.8",
-    "tailwindcss": "^4.3.3"
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "use-ripple-hook": "^2.0.0"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@iconify-json/akar-icons": "^1.2.7",
+    "@iconify-json/ant-design": "^1.2.9",
+    "@iconify-json/arcticons": "^1.2.57",
+    "@iconify-json/bi": "^1.2.7",
+    "@iconify-json/bxl": "^1.2.4",
+    "@iconify-json/carbon": "^1.2.27",
+    "@iconify-json/cib": "^1.2.3",
+    "@iconify-json/devicon": "^1.2.63",
+    "@iconify-json/logos": "^1.2.14",
+    "@iconify-json/material-icon-theme": "^1.2.70",
+    "@iconify-json/skill-icons": "^1.2.4",
+    "@iconify-json/thesvg": "^1.2.6",
+    "@iconify-json/thesvg-color": "^1.2.9"
   }
 }

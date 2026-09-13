@@ -1,81 +1,47 @@
 ---
-import ProjectParquedosBufalos from "@/assets/projetos/parque-dos-bufalos2.png";
-import ProjectPuppyCare from "@/assets/projetos/puppycare.png";
-import ProjectAccordion from "./components/ProjectAccordion.astro";
-import ProjectFrame from "./components/ProjectFrame.astro";
+import projetosData from "@/data/projetos.json";
+import type { ImageMetadata } from "astro";
+import ProjectsSection, { type ProjectItem } from "./components/ProjectsSection";
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/projetos/*.{jpeg,jpg,png,gif,webp,svg}",
+  { eager: true }
+);
+
+const projetos: ProjectItem[] = projetosData.map((project) => {
+  const fullPath = project.image.startsWith("/")
+    ? project.image
+    : `/src/assets/projetos/${project.image}`;
+
+  const image = imageModules[fullPath];
+  if (!image) {
+    throw new Error(
+      `Imagem "${project.image}" não encontrada em "/src/assets/projetos/". Verifique o arquivo JSON.`
+    );
+  }
+
+  return {
+    ...project,
+    alignment: (project.alignment as "left" | "right") || undefined,
+    imageSrc: image.default.src,
+  };
+});
 ---
 
-<section class="min-h-screen p-8 border-t-2 border-yellow-500">
-
-    <div class="flex flex-col ml-[4.27%]">
+<section id="projetos" class="min-h-screen px-4 py-12 sm:px-8 sm:py-16 overflow-hidden">
+    <div class="flex flex-col px-2 sm:px-0 lg:ml-[4.27%]">
         <p class="z-20 text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase text-neutral font-space-mono">
-            02/
+            03/
         </p>
         
-        <div class="flex flex-row gap-4 items-center">
-            <h2 class="text-[clamp(2.25rem,3.75vw,4.5rem)] leading-[1.2] font-bold tracking-[-0.03em] whitespace-nowrap font-fraunces text-white">
+        <div class="flex flex-row gap-3 sm:gap-4 items-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[clamp(2.25rem,3.75vw,4.5rem)] leading-[1.2] font-bold tracking-[-0.03em] whitespace-nowrap font-fraunces text-white">
                 Projetos
             </h2>
-            <span class="bg-white w-[80%] h-1 my-auto"></span>
+            <span class="bg-white flex-1 h-[2px] sm:h-1 my-auto mr-4 sm:mr-8"></span>
         </div>
     </div>
 
-    <div class="p-16 gap-20 flex flex-col">
-        <!-- Projeto 01: items-start impede que o frame se mexa quando os accordions abrem -->
-        <div class="flex flex-row items-start">
-            <ProjectFrame 
-                imageSrc={ProjectParquedosBufalos} 
-                alt="Parque dos Búfalos" 
-                height={368} 
-            />
-
-            <!-- mt-10 alinha o topo do texto com o topo do ProjectFrame -->
-            <div class="ml-20">
-                <span class="text-7xl font-fraunces">01</span>
-                <h3 class="text-4xl font-semibold whitespace-nowrap font-space-grotesk text-white">Parque dos Búfalos</h3>
-                <p class="text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase text-neutral font-space-mono">Website</p>
-
-                <ProjectAccordion title="Descrição">
-                    Um site para apresentar o parque e suas lutas
-                </ProjectAccordion>
-
-                <ProjectAccordion title="Minha função">
-                    Front-END, Back-END, API Instagram, deploy, hosting e entrevistador.
-                </ProjectAccordion>
-
-                <ProjectAccordion title="Código fonte">
-                    HTML, CSS, JavaScript
-                </ProjectAccordion>
-            </div>
-        </div>
-
-        <!-- Projeto 02: items-start impede que o frame se mexa quando os accordions abrem -->
-        <div class="flex flex-row items-start mt-20">
-            <!-- mt-10 alinha o topo do texto com o topo do ProjectFrame -->=
-            <div class="mr-20">
-                <span class="text-7xl font-fraunces">02</span>
-                <h3 class="text-4xl font-semibold whitespace-nowrap font-space-grotesk text-white">Puppy Care</h3>
-                <p class="text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase text-neutral font-space-mono">Website</p>
-
-                <ProjectAccordion title="Descrição">
-                    Um site de um petshop, com agendamento para o cliente e uma tela administrativa.
-                </ProjectAccordion>
-
-                <ProjectAccordion title="Minha função">
-                    Front-END, Back-END, WEB Design, Banco de Dados, DEV-Ops, deploy, hosting e entrevistador.
-                </ProjectAccordion>
-
-                <ProjectAccordion title="Código fonte">
-                    TypeScript, React, TailwindCSS, Next, Nest, PostgreSQL, Prisma, Docker, VPS, Nginx
-                </ProjectAccordion>
-            </div>
-
-            <ProjectFrame 
-                imageSrc={ProjectPuppyCare} 
-                alt="Puppy Care" 
-                height={360} 
-            />
-        </div>
-    </div>
-
+    <!-- Componente React com estado interativo e animações de filtro -->
+    <ProjectsSection client:load projects={projetos} />
 </section>

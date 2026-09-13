@@ -1,29 +1,80 @@
-<section class="min-h-screen border-t-2 border-yellow-500">
-  <div class="mt-10 flex w-[34.2vw] flex-col items-center ml-[6.72%]">
-    <p class="text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono ">Experiência</p>
-    
-    <div class="flex gap-20 flex-col mt-10">
-      <div class="flex gap-[4.9vw]">
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-      </div>
-      <div class="flex gap-[4.9vw]">
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-      </div>
-      <div class="flex gap-[4.9vw]">
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-      </div>
-      <div class="flex gap-[4.9vw]">
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-        <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral"></div>
-      </div>
-    </div>
+---
+import { Icon } from 'astro-icon/components';
+const skills = [
+  { name: "bxl:next-js", label: "Next.Js" },
+  { name: "thesvg-color:ruby-on-rails", label: "Ruby on Rails" },
+  { name: "logos:django-icon", label: "Django" },
+  { name: "bxl:fastapi", label: "FastAPI" },
+  { name: "thesvg-color:react-dark", label: "React" },
+  { name: "skill-icons:javascript", label: "JavaScript" },
+  { name: "bxl:motion-js", label: "Motion.dev" },
+  { name: "material-icon-theme:nest", label: "Nest.Js" },
+  { name: "devicon:mysql", label: "MySQL" },
+  { name: "devicon:postgresql", label: "PostgreSQL" },
+  { name: "bxl:prisma-orm", label: "Prisma ORM" },
+  { name: "skill-icons:mongodb", label: "MongoDB" },
+  { name: "devicon:nodejs", label: "Node.Js" },
+  { name: "thesvg-color:tailwind-css", label: "Tailwind CSS" },
+  { name: "devicon:java", label: "Java" },
+  { name: "thesvg:express", label: "Express" },
+  { name: "devicon:html5", label: "HTML5" },
+  { name: "thesvg-color:css3", label: "CSS3" },
+  { name: "devicon:bootstrap", label: "Bootstrap" },
+  { name: "devicon:git", label: "GIT" },
+  { name: "akar-icons:github-fill", label: "GIT-Hub" },
+  { name: "logos:bitbucket", label: "BIT-Bucket" },
+  { name: "akar-icons:vercel-fill", label: "Vercel" },
+  { name: "carbon:ibm-devops-control", label: "CI-CD" },
+  { name: "material-icon-theme:playwright", label: "Playwright" },
+  { name: "logos:docker-icon", label: "Docker" },
+  { name: "devicon:figma", label: "Figma" },
+  { name: "thesvg-color:canva", label: "Canva" },
+  { name: "devicon:photoshop", label: "Photoshop" },
+  { name: "skill-icons:premiere", label: "Premiere" },
+  
+];
+const principaisSkills = [
+  { name: "logos:python", label: "Python" },
+  { name: "devicon:ruby", label: "Ruby" },
+  { name: "skill-icons:typescript", label: "TypeScript" },
+];
+---
 
+<section id="experiencia" class="min-h-screen px-4 py-12 sm:px-8 sm:py-16 lg:px-0 lg:py-0">
+  <!-- PRINCIPAIS HABILIDADES (Apenas no Mobile — acima de Experiência) -->
+  <div class="flex flex-col items-center mb-10 sm:mb-14 lg:hidden">
+    <p class="text-xs sm:text-sm font-semibold tracking-[0.08em] uppercase font-space-mono text-neutral">
+      Principais habilidades
+    </p>
+    
+    <div class="mt-4 flex gap-4 sm:gap-6 justify-center">
+      {principaisSkills.map((skill) => (
+        <div class="aspect-[156/137] w-[80px] sm:w-[100px] rounded-[16px] sm:rounded-[20px] bg-neutral flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-ink p-1.5 select-none shadow-sm">
+          <Icon name={skill.name} class="w-8 h-8 sm:w-10 sm:h-10" />
+          <span class="font-space-mono text-[10px] sm:text-xs font-bold tracking-tight text-center leading-tight">
+            {skill.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="flex flex-col items-center lg:ml-[6.72%] lg:w-[34.2vw] lg:mt-10">
+    <p class="text-xs sm:text-sm lg:text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono text-neutral">
+      Experiência
+    </p>
+    
+
+    <div class="grid grid-cols-3 gap-x-3 sm:gap-x-4 lg:gap-x-[4.9vw] gap-y-4 sm:gap-y-8 lg:gap-y-12 mt-4 lg:mt-10">
+      <!-- Linhas de 3 em 3 -->
+      {skills.map((skill) => (
+        <div class="aspect-[156/137] w-[80px] sm:w-[100px] lg:w-[8.13vw] rounded-[16px] lg:rounded-[20px] bg-neutral flex flex-col items-center justify-center gap-1 lg:gap-[0.4vw] text-ink p-1.5 lg:p-2 select-none shadow-sm">
+          <Icon name={skill.name} class="w-8 h-8 sm:w-10 sm:h-10 lg:w-[3.5vw] lg:h-[3.5vw]" />
+          <span class="font-space-mono text-[10px] sm:text-xs lg:text-[clamp(0.6rem,0.68vw,0.8rem)] font-bold tracking-tight text-center leading-tight">
+            {skill.label}
+          </span>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

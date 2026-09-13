@@ -1,0 +1,146 @@
+[
+  {
+    "id": "01",
+    "title": "Puppy Care",
+    "category": "Website",
+    "tags": ["destaques", "reais"],
+    "image": "puppycare.png",
+    "alt": "Puppy Care",
+    "height": 360,
+    "alignment": "right",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Um site de um petshop, com agendamento para o cliente e uma tela administrativa."
+      },
+      {
+        "title": "Minha função",
+        "content": "Front-END, Back-END, WEB Design, Banco de Dados, DEV-Ops, deploy, hosting e entrevistador."
+      },
+      {
+        "title": "Código fonte",
+        "content": "TypeScript, React, TailwindCSS, Next, Nest, PostgreSQL, Prisma, Docker, VPS, Nginx"
+      }
+    ]
+  },
+  {
+    "id": "02",
+    "title": "onPoint",
+    "category": "Programa nativo PC",
+    "tags": ["destaques", "reais"],
+    "image": "onpoint.png",
+    "alt": "onPoint",
+    "height": 360,
+    "alignment": "left",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Estudo de caso e desenvolvimento de aplicação focada em produtividade e controle de tempo com interface moderna."
+      },
+      {
+        "title": "Minha função",
+        "content": "UI/UX Design, Front-END, Arquitetura e Engenharia de Software."
+      },
+      {
+        "title": "Código fonte",
+        "content": "TypeScript, React, TailwindCSS"
+      }
+    ]
+  },
+  {
+    "id": "03",
+    "title": "A DSOP merece mais",
+    "category": "Website",
+    "tags": ["reais", "destaques"],
+    "image": "a_dsop_merece_mais.png",
+    "alt": "A DSOP merece mais",
+    "height": 368,
+    "alignment": "right",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Um site buscando a minha efetivação, apresentando os meus números e vantagens para a empresa, com o objetivo de mostrar que mereço esta oportunidade junto ao meu colega de trabalho Danilo Neri."
+      },
+      {
+        "title": "Minha função",
+        "content": "Front-END, WEB Design, deploy."
+      },
+      {
+        "title": "Código fonte",
+        "content": "TypeScript, React, TailwindCSS, Next, API GLPI, n8n"
+      }
+    ]
+  },
+  {
+    "id": "04",
+    "title": "Parque dos Búfalos",
+    "category": "Website",
+    "tags": ["destaques", "reais"],
+    "image": "parque-dos-bufalos2.png",
+    "alt": "Parque dos Búfalos",
+    "height": 368,
+    "alignment": "left",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Um site para apresentar o parque e suas lutas"
+      },
+      {
+        "title": "Minha função",
+        "content": "Front-END, Back-END, API Instagram, deploy, hosting e entrevistador."
+      },
+      {
+        "title": "Código fonte",
+        "content": "HTML, CSS, JavaScript"
+      }
+    ]
+  },
+  {
+    "id": "05",
+    "title": "Jogo da velha",
+    "category": "Website",
+    "tags": ["estudos"],
+    "image": "jogo-da-velha.png",
+    "alt": "Jogo da velha",
+    "height": 368,
+    "alignment": "left",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Um site para jogar o jogo da velha contra uma AI rodando local, ou contra outro player."
+      },
+      {
+        "title": "Minha função",
+        "content": "Front-END, Back-END, AI API, FlaskAPI."
+      },
+      {
+        "title": "Código fonte",
+        "content": "TypeScript, Python, React, CSS, FlaskAPI, Tensorflow, Numpy, Transformers"
+      }
+    ]
+  },
+  {
+    "id": "06",
+    "title": "Thor",
+    "category": "Game nativo PC",
+    "tags": ["estudos"],
+    "image": "thor-game-2.png",
+    "alt": "Thor",
+    "height": 368,
+    "alignment": "right",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Um jogo feito em 2 dias de hackathon, onde você é o Thor com o objetivo de fugir contra os cogumelos pois não tive tempo do Thor poder bater nos inimigos KKKKKKK"
+      },
+      {
+        "title": "Minha função",
+        "content": "Front-END, Back-END, Game Design, animações."
+      },
+      {
+        "title": "Código fonte",
+        "content": "Python"
+      }
+    ]
+  }
+]

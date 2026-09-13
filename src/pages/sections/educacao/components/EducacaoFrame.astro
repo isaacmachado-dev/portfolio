@@ -12,63 +12,80 @@ export interface TimelineItem {
 interface Props {
     title?: string;
     items?: TimelineItem[];
+    showLine?: boolean | string;
+    showCorners?: boolean | string;
+    scrollable?: boolean | string;
+    class?: string;
 }
 
-const defaultItems: TimelineItem[] = [
-    {
-        title: "Ensino Superior",
-        subtitle: "UNIVESP — Engenharia da Computação",
-        period: "2023-2028",
-    },
-    {
-        title: "Ensino Médio",
-        period: "2020-2022",
-    },
-    {
-        title: "Ensino Fundamental",
-        period: "2010-2019",
-    },
-];
+const {
+    title,
+    items,
+    showLine,
+    showCorners = true,
+    scrollable,
+    class: className = "",
+} = Astro.props;
 
-const { title = "Colégio", items = defaultItems } = Astro.props;
+const hasSlot = Astro.slots.has("default");
+const hasItems = (items && items.length > 0) || hasSlot;
+
+// Exibe os cantos por padrão (exceto se explicitamente false)
+const shouldShowCorners = showCorners !== false && showCorners !== "false";
+
+// Exibe a linha conectora apenas se houver itens/conteúdo na timeline
+const shouldShowLine = showLine !== undefined
+    ? (showLine === true || showLine === "true")
+    : hasItems;
+
+// Habilita scroll interno com scrollbar lateral (ativo por padrão quando há timeline)
+const shouldScroll = scrollable !== undefined
+    ? (scrollable === true || scrollable === "true")
+    : Boolean(shouldShowLine);
 ---
 
-<span class="flex justify-center font-space-mono">{title}</span>
-<div class="bg-[#0F0F0F] border-2 p-5">
+{title && (
+    <span class="flex justify-center font-space-mono">
+        {title}
+    </span>
+)}
+<div class:list={["relative bg-[#0F0F0F] border-2 p-3 sm:p-5 flex flex-col flex-1 min-h-0", className]}>
+    {shouldShowCorners && (
+        <>
+            {/* Canto superior esquerdo */}
+            <span class="absolute top-2 sm:top-3 left-2 sm:left-3 w-5 h-5 sm:w-8 sm:h-8 border-t-4 sm:border-t-8 border-l-4 sm:border-l-8 border-white pointer-events-none" />
 
-    <div class="flex flex-col relative gap-5 p-10">
-        <!-- Canto superior esquerdo -->
-        <span class="absolute top-0 left-0 w-8 h-8 border-t-8 border-l-8 border-white pointer-events-none">
-        </span>
+            {/* Canto superior direito */}
+            <span class="absolute top-2 sm:top-3 right-2 sm:right-3 w-5 h-5 sm:w-8 sm:h-8 border-t-4 sm:border-t-8 border-r-4 sm:border-r-8 border-white pointer-events-none" />
 
-        <!-- Canto superior direito -->
-        <span class="absolute top-0 right-0 w-8 h-8 border-t-8 border-r-8 border-white pointer-events-none">
-        </span>
+            {/* Canto inferior esquerdo */}
+            <span class="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 w-5 h-5 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-l-4 sm:border-l-8 border-white pointer-events-none" />
 
-        <!-- Canto inferior esquerdo -->
-        <span class="absolute bottom-0 left-0 w-8 h-8 border-b-8 border-l-8 border-white pointer-events-none">
-        </span>
+            {/* Canto inferior direito */}
+            <span class="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 w-5 h-5 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-r-4 sm:border-r-8 border-white pointer-events-none" />
+        </>
+    )}
 
-        <!-- Canto inferior direito -->
-        <span class="absolute bottom-0 right-0 w-8 h-8 border-b-8 border-r-8 border-white pointer-events-none">
-        </span>
-
-        <!-- Timeline Container com linha contínua e itens -->
-        <div class="relative flex flex-col gap-6">
-            <!-- Barra linha vertical -->
-            <div class="absolute left-3 top-10 bottom-9 w-0.5 bg-neutral -translate-x-1/2 pointer-events-none"></div>
-
-            <slot>
-                {items.map((item) => (
-                    <EducacaoItem
-                        title={item.title}
-                        subtitle={item.subtitle}
-                        period={item.period}
-                        icon={item.icon}
-                    />
-                ))}
-            </slot>
-        </div>
+    <div class:list={[
+        "flex flex-col relative p-3 sm:p-6 lg:p-8 flex-1 h-full min-h-0",
+        shouldScroll && "overflow-y-auto overflow-x-hidden custom-scrollbar pr-1 sm:pr-4",
+        "[&>astro-island]:flex [&>astro-island]:flex-col [&>astro-island]:flex-1 [&>astro-island]:h-full [&>astro-island]:min-h-0"
+    ]}>
+        {shouldShowLine ? (
+            <div class="@container timeline-container relative flex flex-col p-1 sm:p-2">
+                <slot>
+                    {items?.map((item) => (
+                        <EducacaoItem
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            period={item.period}
+                            icon={item.icon}
+                        />
+                    ))}
+                </slot>
+            </div>
+        ) : (
+            <slot />
+        )}
     </div>
-
 </div>

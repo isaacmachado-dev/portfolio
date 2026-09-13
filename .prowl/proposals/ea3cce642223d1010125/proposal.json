@@ -1,0 +1,28 @@
+{
+  "id": "ea3cce642223d1010125",
+  "operation": "create",
+  "target_path": "sections/projetos.md",
+  "candidate_path": "ea3cce642223d1010125/candidate.md",
+  "status": "accepted",
+  "author": "isaac",
+  "created_at": "2026-09-11T03:26:02Z",
+  "reviewed_at": "2026-09-11T03:26:52Z",
+  "decision": {
+    "schema_version": "prowl.knowledge-decision/v1",
+    "proposal_id": "ea3cce642223d1010125",
+    "action": "accept",
+    "idempotency_key": "736bbe3f9f5ffb0519ad629109f713aa9c9ab23dee31b48783bdbc3eca5724ef",
+    "principal_id": "local-operator",
+    "expected_version": "0f58b1c1c3316bb601b079d0aadae93a642fd35c0ff56cb6be7d60b4a6706893",
+    "version_before": "0f58b1c1c3316bb601b079d0aadae93a642fd35c0ff56cb6be7d60b4a6706893",
+    "version_after": "c9271a7333a894ac9f7899d8e69627bf098600e78b2bc39f83264d95f8da222a",
+    "decided_at": "2026-09-11T03:26:52.077375734Z",
+    "rollback": {
+      "paths": [
+        "sections/projetos.md",
+        "index.md",
+        "log.md"
+      ]
+    }
+  }
+}

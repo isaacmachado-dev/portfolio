@@ -87,3 +87,55 @@ body {
 .hero-tilt {
   transform: rotate(31.07deg);
 }
+
+@theme inline {
+  @keyframes terminal-blink {
+  0%, 100% {
+    opacity: 0;
+    }
+  50% {
+    opacity: 1;
+    }
+  }
+  @keyframes terminal-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+  }
+}
+  .terminal-cursor::after {
+    content: "|";
+    margin-left: 2px;
+    animation: terminal-blink 1s infinite;
+}
+  .terminal-line {
+    animation: terminal-fade-in 0.3s ease-in-out;
+}
+
+/* Scrollbar elegante para containers escuros com scroll interno */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #969393 transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #969393;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d5d5d5;
+}

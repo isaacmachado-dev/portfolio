@@ -9,33 +9,35 @@ interface Props {
   height?: number;
 }
 
-const { imageSrc, alt, width = 720, height = 360 } = Astro.props;
+const { imageSrc, alt = "", width = 720, height = 360 } = Astro.props;
 ---
 
 <!-- h-fit garante que a moldura nunca estique verticalmente com a abertura dos accordions -->
-<div class="relative w-fit h-fit p-6 mt-10">
+<div class="relative w-full max-w-[720px] p-4 sm:p-6 mt-6 lg:mt-10">
   <div>
     <!-- Canto Superior Esquerdo -->
-    <span class="absolute top-0 left-0 w-8 h-8 border-t-8 border-l-8 border-white pointer-events-none"></span>
+    <span class="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t-4 sm:border-t-8 border-l-4 sm:border-l-8 border-white pointer-events-none"></span>
 
     <!-- Canto Superior Direito -->
-    <span class="absolute top-0 right-0 w-8 h-8 border-t-8 border-r-8 border-white pointer-events-none"></span>
+    <span class="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t-4 sm:border-t-8 border-r-4 sm:border-r-8 border-white pointer-events-none"></span>
 
     <!-- Canto Inferior Esquerdo -->
-    <span class="absolute bottom-0 left-0 w-8 h-8 border-b-8 border-l-8 border-white pointer-events-none"></span>
+    <span class="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-l-4 sm:border-l-8 border-white pointer-events-none"></span>
 
     <!-- Canto Inferior Direito -->
-    <span class="absolute bottom-0 right-0 w-8 h-8 border-b-8 border-r-8 border-white pointer-events-none"></span>
+    <span class="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-r-4 sm:border-r-8 border-white pointer-events-none"></span>
 
     <!-- Imagem -->
     <div class="overflow-hidden">
-      <Image 
-        src={imageSrc}
-        alt={alt}
-        width={width}
-        height={height}
-        class="block"
-      />
+      {imageSrc && (
+        <Image 
+          src={imageSrc}
+          alt={alt || ""}
+          width={width}
+          height={height}
+          class="block w-full h-auto max-h-[420px] object-cover"
+        />
+      )}
     </div>
   </div>
 </div>

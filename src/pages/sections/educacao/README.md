@@ -10,10 +10,14 @@
 ### `EducacaoFrame.astro`
 | Prop | Tipo | Padrão | Descrição |
 | :--- | :--- | :--- | :--- |
-| `title` | `string` | `"Colégio"` | Título exibido acima da moldura |
-| `items` | `TimelineItem[]` | Lista padrão (Superior, Médio, Fundamental) | Lista de dados para renderizar os cards |
+| `title` | `string?` | `undefined` | Título exibido acima da moldura |
+| `items` | `TimelineItem[]?` | `undefined` | Lista de dados para renderizar os cards |
+| `showCorners` | `boolean` | `true` | Exibe os 4 cantos brancos reforçados |
+| `showLine` | `boolean?` | `auto` | Controle manual da linha conectora vertical |
+| `scrollable` | `boolean?` | `auto` | Habilita scroll interno com scrollbar lateral estilizada |
+| `class` | `string?` | `""` | Classes CSS extras para o container de fundo |
 
-> Suporta também conteúdo customizado via `<slot />`.
+> **Uso como moldura vazia:** `<EducacaoFrame />` ou `<EducacaoFrame></EducacaoFrame>` renderiza apenas a moldura (fundo escuro + 4 cantos), sem nenhum item ou linha no meio. Caso queira itens, passe-os via prop `items` ou dentro do `<slot>`.
 
 ### `TimelineItem` / `EducacaoItem.astro`
 | Prop | Tipo | Padrão | Descrição |

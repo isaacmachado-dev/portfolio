@@ -1,26 +1,28 @@
 ---
 import '../styles/global.css';
+import Contato from './sections/contato/Contato.astro';
 import Educacao from './sections/educacao/Educacao.astro';
 import Habilidades from "./sections/habilidades/Habilidades.astro";
 import Hero from "./sections/hero/Hero.astro";
 import Projetos from './sections/projetos/Projetos.astro';
 
 ---
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link href="https://api.fontshare.com/v2/css?f[]=ranade@300,400,600,700&f[]=sharpie@800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Desenvolvedor Full-Stack" />
     <title>Isaac Machado</title>
   </head>
-  <body class="bg-primary text-white antialiased">
+  <body class="bg-primary text-white antialiased overflow-x-hidden selection:bg-neutral selection:text-ink">
     <Hero />
     <Habilidades />
-    <Projetos />
     <Educacao />
+    <Projetos />
+    <Contato />
   </body>
 </html>
