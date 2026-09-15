@@ -2,6 +2,7 @@
   {
     "id": "01",
     "title": "Puppy Care",
+    "link": "https://www.puppycarepet.com.br",
     "category": "Website",
     "tags": ["destaques", "reais"],
     "image": "puppycare.png",
@@ -26,6 +27,7 @@
   {
     "id": "02",
     "title": "onPoint",
+    "link": "https://github.com/isaacmachado-dev/app.onpoint",
     "category": "Programa nativo PC",
     "tags": ["destaques", "reais"],
     "image": "onpoint.png",
@@ -50,6 +52,7 @@
   {
     "id": "03",
     "title": "A DSOP merece mais",
+    "link": "https://isaac-danilo.vercel.app/",
     "category": "Website",
     "tags": ["reais", "destaques"],
     "image": "a_dsop_merece_mais.png",
@@ -74,6 +77,7 @@
   {
     "id": "04",
     "title": "Parque dos Búfalos",
+    "link": "https://www.parquedosbufalos.com.br",
     "category": "Website",
     "tags": ["destaques", "reais"],
     "image": "parque-dos-bufalos2.png",
@@ -98,12 +102,13 @@
   {
     "id": "05",
     "title": "Jogo da velha",
+    "link": "https://github.com/isaacmachado-dev/jogo-da-velha",
     "category": "Website",
     "tags": ["estudos"],
     "image": "jogo-da-velha.png",
     "alt": "Jogo da velha",
     "height": 368,
-    "alignment": "left",
+    "alignment": "right",
     "accordions": [
       {
         "title": "Descrição",
@@ -121,13 +126,14 @@
   },
   {
     "id": "06",
-    "title": "Thor",
+    "title": "The Legend of Thor",
+    "link": "https://github.com/isaacmachado-dev/thor-game",
     "category": "Game nativo PC",
     "tags": ["estudos"],
     "image": "thor-game-2.png",
     "alt": "Thor",
     "height": 368,
-    "alignment": "right",
+    "alignment": "left",
     "accordions": [
       {
         "title": "Descrição",
@@ -146,12 +152,13 @@
   {
     "id": "07",
     "title": "Pentest Bank",
+    "link": "https://github.com/isaacmachado-dev/pentest-bank",
     "category": "Website",
     "tags": ["estudos"],
     "image": "transaction-pentest-bank.png",
     "alt": "Pentest Bank",
     "height": 368,
-    "alignment": "left",
+    "alignment": "right",
     "accordions": [
       {
         "title": "Descrição",
@@ -170,12 +177,13 @@
   {
     "id": "08",
     "title": "Fila bancária",
+    "link": "https://github.com/isaacmachado-dev/fila-bancaria",
     "category": "Website",
     "tags": ["estudos"],
     "image": "fila-bancaria.png",
     "alt": "Fila bancária",
     "height": 368,
-    "alignment": "right",
+    "alignment": "left",
     "accordions": [
       {
         "title": "Descrição",

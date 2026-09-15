@@ -1,6 +1,7 @@
 import { Minus, Plus } from "lucide";
+import { ArrowUpRight } from "lucide-react";
 import { MorphIcon } from "morphicons/react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react";
 import { useState } from "react";
 import ProjectFilter from "./ProjectFilter";
 
@@ -14,6 +15,7 @@ export interface ProjectItem {
   id: string;
   title: string;
   category: string;
+  link?: string;
   tag?: string;
   tags?: string[];
   image: string;
@@ -57,12 +59,39 @@ function ProjectFrame({
   alt = "",
   width = 720,
   height = 360,
+  link,
 }: {
   imageSrc: string;
   alt?: string;
   width?: number;
   height?: number;
+  link?: string;
 }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const smoothX = useSpring(mouseX, { stiffness: 350, damping: 25 });
+  const smoothY = useSpring(mouseY, { stiffness: 350, damping: 25 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handlePointerEnter = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    if (e.pointerType === "touch") return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+    setIsHovered(true);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    if (e.pointerType === "touch") return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  };
+
+  const handlePointerLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <div className="relative w-full max-w-[720px] p-4 sm:p-6 mt-6 lg:mt-10">
       <div>
@@ -71,18 +100,53 @@ function ProjectFrame({
         <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-l-4 sm:border-l-8 border-white pointer-events-none" />
         <span className="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-r-4 sm:border-r-8 border-white pointer-events-none" />
 
-        <div className="overflow-hidden">
+        <a
+          href={link || "#"}
+          target={link ? "_blank" : undefined}
+          rel={link ? "noopener noreferrer" : undefined}
+          onClick={(e) => {
+            if (!link) {
+              e.preventDefault();
+            }
+          }}
+          onPointerEnter={handlePointerEnter}
+          onPointerMove={handlePointerMove}
+          onPointerLeave={handlePointerLeave}
+          className="group relative block overflow-hidden cursor-pointer sm:cursor-none select-none"
+          aria-label={alt ? `Abrir em uma nova aba ${alt}` : "Abrir em uma nova aba"}
+        >
           {imageSrc && (
             <img
               src={imageSrc}
               alt={alt || ""}
               width={width}
               height={height}
-              className="block w-full h-auto max-h-[420px] object-cover"
+              className="block w-full h-auto max-h-[420px] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               loading="lazy"
             />
           )}
-        </div>
+
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.6 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
+                style={{
+                  x: smoothX,
+                  y: smoothY,
+                  translateX: "-50%",
+                  translateY: "-50%",
+                }}
+                className="pointer-events-none absolute top-0 left-0 z-30 hidden sm:flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-ink shadow-2xl font-space-grotesk tracking-wide"
+              >
+                <span>Nova aba</span>
+                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </a>
       </div>
     </div>
   );
