@@ -10,6 +10,7 @@
 @import "@fontsource/space-mono";
 @import "./custom.css";
 @import "./textReveal.css";
+@import "./progressiveBlur.css";
 
 @font-face {
   font-family: 'Kabel';
