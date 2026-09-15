@@ -1,6 +1,6 @@
 ---
 import type { ComponentType } from "react";
-import EducacaoItem from "./FrameItem.astro";
+import FundamentosItem from "./FundamentosFrameItem.astro";
 
 export interface TimelineItem {
     title: string;
@@ -65,7 +65,7 @@ const shouldScroll = scrollable !== undefined
             <div class="@container timeline-container relative flex flex-col p-1 sm:p-2">
                 <slot>
                     {items?.map((item) => (
-                        <EducacaoItem
+                        <FundamentosItem
                             title={item.title}
                             subtitle={item.subtitle}
                             period={item.period}
