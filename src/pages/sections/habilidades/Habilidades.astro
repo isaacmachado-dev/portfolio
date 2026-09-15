@@ -41,15 +41,14 @@ const principaisSkills = [
 ---
 
 <section id="experiencia" class="min-h-screen px-4 py-12 sm:px-8 sm:py-16 lg:px-0 lg:py-0">
-  <!-- PRINCIPAIS HABILIDADES (Apenas no Mobile — acima de Experiência) -->
   <div class="flex flex-col items-center mb-10 sm:mb-14 lg:hidden">
-    <p class="text-xs sm:text-sm font-semibold tracking-[0.08em] uppercase font-space-mono text-neutral">
+    <p class="text-xs sm:text-sm font-semibold tracking-[0.08em] uppercase font-space-mono text-white">
       Principais habilidades
     </p>
     
-    <div class="mt-4 flex gap-4 sm:gap-6 justify-center">
+    <div class="mt-4 flex gap-4 sm:gap-6 justify-center selection:bg-primary selection:text-white">
       {principaisSkills.map((skill) => (
-        <div class="aspect-[156/137] w-[80px] sm:w-[100px] rounded-[16px] sm:rounded-[20px] bg-neutral flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-ink p-1.5 select-none shadow-sm">
+        <div class="aspect-[156/137] w-[80px] sm:w-[100px] rounded-[16px] sm:rounded-[20px] bg-white flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-ink p-1.5 shadow-sm selection:bg-primary selection:text-white">
           <Icon name={skill.name} class="w-8 h-8 sm:w-10 sm:h-10" />
           <span class="font-space-mono text-[10px] sm:text-xs font-bold tracking-tight text-center leading-tight">
             {skill.label}
@@ -60,15 +59,14 @@ const principaisSkills = [
   </div>
 
   <div class="flex flex-col items-center lg:ml-[6.72%] lg:w-[34.2vw] lg:mt-10">
-    <p class="text-xs sm:text-sm lg:text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono text-neutral">
+    <p class="text-xs sm:text-sm font-semibold tracking-[0.08em] uppercase font-space-mono text-white">
       Experiência
     </p>
     
 
-    <div class="grid grid-cols-3 gap-x-3 sm:gap-x-4 lg:gap-x-[4.9vw] gap-y-4 sm:gap-y-8 lg:gap-y-12 mt-4 lg:mt-10">
-      <!-- Linhas de 3 em 3 -->
+    <div class="grid grid-cols-3 gap-x-3 sm:gap-x-4 lg:gap-x-[4.9vw] gap-y-4 sm:gap-y-8 lg:gap-y-12 mt-4 lg:mt-10 selection:bg-primary selection:text-white">
       {skills.map((skill) => (
-        <div class="aspect-[156/137] w-[80px] sm:w-[100px] lg:w-[8.13vw] rounded-[16px] lg:rounded-[20px] bg-neutral flex flex-col items-center justify-center gap-1 lg:gap-[0.4vw] text-ink p-1.5 lg:p-2 select-none shadow-sm">
+        <div class="aspect-[156/137] w-[80px] sm:w-[100px] lg:w-[8.13vw] rounded-[16px] lg:rounded-sm bg-white flex flex-col items-center justify-center gap-1 lg:gap-[0.4vw] text-ink p-1.5 lg:p-2 shadow-sm selection:bg-primary selection:text-white">
           <Icon name={skill.name} class="w-8 h-8 sm:w-10 sm:h-10 lg:w-[3.5vw] lg:h-[3.5vw]" />
           <span class="font-space-mono text-[10px] sm:text-xs lg:text-[clamp(0.6rem,0.68vw,0.8rem)] font-bold tracking-tight text-center leading-tight">
             {skill.label}

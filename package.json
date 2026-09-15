@@ -30,6 +30,7 @@
     "astro": "^7.2.10",
     "astro-icon": "^1.2.0",
     "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
     "lucide-react": "^1.39.0",
     "motion": "^13.2.0",
     "react": "^19.2.8",
@@ -37,6 +38,7 @@
     "react-dom": "^19.2.8",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.3",
+    "tailwindcss-animated": "^2.1.0",
     "use-ripple-hook": "^2.0.0"
   },
   "allowScripts": {
@@ -47,6 +49,7 @@
     "@iconify-json/ant-design": "^1.2.9",
     "@iconify-json/arcticons": "^1.2.57",
     "@iconify-json/bi": "^1.2.7",
+    "@iconify-json/boxicons": "^1.2.0",
     "@iconify-json/bxl": "^1.2.4",
     "@iconify-json/carbon": "^1.2.27",
     "@iconify-json/cib": "^1.2.3",

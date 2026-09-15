@@ -23,13 +23,12 @@ export default function ContatoRippleButton() {
 
   return (
     <div className="relative inline-flex flex-col items-center">
-      {/* Badge feedback */}
       <span
         id="copied-badge"
-        className={`absolute -top-10 px-3 py-1 rounded-full text-xs font-semibold bg-neutral-strong text-ink shadow-md transition-all duration-300 ${
+        className={`absolute -top-8 px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-ink shadow-md transition-all duration-300 ${
           copied
             ? "opacity-100 translate-y-0"
-            : "opacity-0 pointer-events-none translate-y-2"
+            : "opacity-0 pointer-events-none translate-y-1"
         }`}
       >
         E-mail copiado!
@@ -41,7 +40,7 @@ export default function ContatoRippleButton() {
         ref={ripple}
         onPointerDown={event}
         onClick={handleCopy}
-        className="relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-xl bg-tertiary px-6 py-3 text-base sm:text-lg font-semibold text-ink transition-all hover:bg-neutral-strong active:scale-95 shadow-md cursor-pointer select-none font-space-grotesk"
+        className="relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-xl bg-tertiary px-6 py-3 text-base sm:text-lg  text-ink transition-all hover:bg-neutral-strong active:scale-95 shadow-md cursor-pointer select-none font-fraunces"
       >
         <span>{email}</span>
 

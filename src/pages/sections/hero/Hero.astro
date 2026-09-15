@@ -12,36 +12,30 @@ const skills = [
 ---
 
 <section class="relative min-h-svh overflow-hidden bg-primary text-white">
-  <!-- Plano rotacionado 31° (secondary #1b1820) — centro em 1510.9, 837 -->
   <div
     aria-hidden="true"
     class="pointer-events-none absolute left-[78%] top-[77%] z-0 hidden h-[65vh] min-h-[420px] w-[60vw] -translate-x-1/2 -translate-y-1/2 rotate-[31.07deg] bg-secondary lg:block"
   ></div>
 
-  <!-- PC header -->
   <header class="flex-row p-8 items-center z-30 hidden lg:flex">
     <Image src={LogoMark} alt="Isaac Machado — monograma I" width={60} height={56} class="h-[min(5.2vh,56px)] w-auto" />
     <span class="font-logo text-[clamp(2rem,2.5vw,3rem)] leading-none text-neutral-strong select-none">saac</span>
   </header>
 
-
-  <!-- ===== Desktop: canvas absoluto (posições = artboard 1920x1080) ===== -->
   <main class="absolute inset-0 hidden lg:block">
-    <p class="absolute left-[4.27%] top-[40.65%] z-20 text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono text-neutral">
-      01/
-    </p>
-
     <h1 class="absolute left-[4.27%] top-[42.3%] z-20 text-[clamp(2.25rem,3.75vw,4.5rem)] leading-[1.2] font-bold tracking-[-0.03em] whitespace-nowrap font-fraunces">
       Full-Stack Developer
     </h1>
 
-    <!-- CTA Desktop "Conversar comigo" — Figma (134, 571, 245x60) -->
-    <div class="absolute left-[7%] top-[52.9%] z-20 flex items-center gap-4">
+    <div class="absolute left-[10%] top-[52.9%] z-20 flex items-center gap-4">
       <a
         href="#contato"
-        class="inline-flex h-[clamp(48px,5.56vh,60px)] items-center justify-center rounded-[12px] bg-tertiary px-8 py-4 text-[clamp(1.125rem,1.25vw,1.5rem)] font-bold text-ink transition-all hover:bg-neutral-strong active:scale-95 shadow-md select-none font-space-grotesk"
+        class="a-02"
       >
-        Conversar comigo
+        <div class="inner font-fraunces">Conversar comigo</div>
+        <div class="circle"><span>
+          <Icon name="boxicons:arrow-down-stroke" class="w-5 h-5" />
+        </span></div>
       </a>
     </div>
 
@@ -55,12 +49,11 @@ const skills = [
       />
     </div>
 
-    <!-- PRINCIPAIS HABILIDADES-->
     <div class="absolute left-[6.72%] top-[79.7%] z-20 flex w-[34.2vw] flex-col items-center">
       <p class="text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono">Principais habilidades</p>
       <div class="mt-[clamp(0.5rem,1.46vw,1.55rem)] flex gap-[5.5vw]">
         {skills.map((skill) => (
-          <div class="aspect-[156/137] w-[8.13vw] rounded-[20px] bg-neutral flex flex-col items-center justify-center gap-[0.4vw] text-ink p-2 select-none shadow-sm">
+          <div class="aspect-[156/137] w-[8.13vw] rounded-[16px] lg:rounded-sm  bg-white flex flex-col items-center justify-center gap-[0.4vw] text-ink p-2 selection:bg-primary selection:text-white shadow-sm">
             <Icon name={skill.name} class="w-[3.5vw] h-[3.5vw]" />
             <span class="font-space-mono text-[clamp(0.6rem,0.68vw,0.8rem)] font-bold tracking-tight text-center leading-tight">
               {skill.label}
@@ -71,21 +64,17 @@ const skills = [
     </div>
   </main>
 
-  <!-- ===== Mobile: Hero layout conforme Figma 202:38 ===== -->
   <div class="relative flex flex-col h-svh min-h-[640px] w-full overflow-hidden lg:hidden">
-    <!-- Plano rotacionado 31.07° no mobile (secondary #1b1820) — origin (50%, 30%) conforme Figma node 202:40 -->
     <div
       aria-hidden="true"
       class="pointer-events-none absolute left-[50%] top-[30%] z-0 h-[65vh] min-h-[420px] w-[240vw] origin-top-left rotate-[31.07deg] bg-secondary"
     ></div>
 
-    <!-- Mobile header -->
     <header class="relative z-30 flex flex-row px-6 py-6 items-center">
       <Image src={LogoMark} alt="Isaac Machado — monograma I" width={60} height={56} class="h-10 sm:h-11 w-auto" />
       <span class="font-logo text-3xl sm:text-4xl leading-none text-neutral-strong select-none">saac</span>
     </header>
 
-    <!-- Retrato Isaac Machado recortado à direita -->
     <Image
       src={IsaacFrame}
       alt="Retrato de Isaac Machado"
@@ -95,7 +84,6 @@ const skills = [
       class="pointer-events-none absolute -right-[18%] sm:-right-[8%] bottom-0 z-10 h-[80vh] max-h-[850px] w-auto max-w-none object-cover object-top select-none"
     />
 
-    <!-- Conteúdo principal (Título + CTA) -->
     <main class="relative z-20 flex flex-col justify-start px-6 sm:px-8 pt-[12vh] sm:pt-[14vh]">
       <h1 class="font-space-grotesk text-[2rem] sm:text-[2.25rem] font-bold tracking-[-0.03em] leading-[1.2] text-white max-w-[240px] sm:max-w-[280px]">
         Full-Stack<br />Developer
@@ -104,9 +92,12 @@ const skills = [
       <div class="mt-6 sm:mt-7">
         <a
           href="#contato"
-          class="inline-flex h-[42px] items-center justify-center rounded-full bg-tertiary px-6 text-base font-bold text-ink transition-all hover:bg-neutral-strong active:scale-95 font-space-grotesk shadow-md select-none"
+          class="a-02"
         >
-          Conversar comigo
+          <div class="inner font-fraunces">Conversar comigo</div>
+          <div class="circle"><span>
+            <Icon name="boxicons:arrow-down-stroke" class="w-5 h-5" />
+          </span></div>
         </a>
       </div>
     </main>

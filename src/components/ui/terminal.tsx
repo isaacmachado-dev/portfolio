@@ -156,7 +156,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
     setInput("");
   }, []);
 
-  // Executa uma sequência de passos (scripted steps) de forma segura
   const runCustomSteps = useCallback(
     (customSteps: string[], finalMsg?: string) => {
       setBusy(true);
@@ -188,7 +187,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
     [stepDelay],
   );
 
-  // Manipula qualquer comando executado
   const handleExecuteCommand = useCallback(
     (cmdText: string) => {
       const trimmed = cmdText.trim();
@@ -202,23 +200,19 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
         return;
       }
 
-      // Adiciona o comando ao histórico
       setOutput((prev) => [...prev, `${promptSymbol} ${trimmed}`]);
 
-      // Se há steps personalizados passados por prop (ex: TerminalDemo2)
       if (steps && steps.length > 0 && (lower === command.toLowerCase() || !BUILTIN_COMMANDS[lower])) {
         runCustomSteps(steps, finalMessage);
         return;
       }
 
-      // Se é um comando embutido
       if (BUILTIN_COMMANDS[lower]) {
         setOutput((prev) => [...prev, ...BUILTIN_COMMANDS[lower]]);
         setCompleted(true);
         return;
       }
 
-      // Comando desconhecido
       setOutput((prev) => [
         ...prev,
         `zsh: comando não encontrado: ${trimmed}. Digite 'help' para ver os comandos.`,
@@ -228,14 +222,12 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
     [promptSymbol, steps, command, finalMessage, runCustomSteps],
   );
 
-  // Auto-scroll sempre que output mudar
   useEffect(() => {
     if (outputRef.current) {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
     }
   }, [output, typing, busy]);
 
-  // Efeito de auto-execução inicial caso ativado
   useEffect(() => {
     if (autoExecute && !typing && output.length === 0 && !busy) {
       const timer = setTimeout(() => {
@@ -246,7 +238,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
     }
   }, [autoExecute, typing, output.length, busy]);
 
-  // Digitação automática de comando quando autoExecute=true
   useEffect(() => {
     if (typing && charIndex < command.length) {
       const timer = setTimeout(() => {
@@ -264,7 +255,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
     }
   }, [typing, charIndex, command, typingDelay, handleExecuteCommand]);
 
-  // Efeito de repetição (repeat) para autoExecute
   useEffect(() => {
     if (autoExecute && repeat && completed) {
       const timer = setTimeout(() => {
@@ -274,7 +264,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
     }
   }, [autoExecute, repeat, completed, resetTerminal, repeatDelay]);
 
-  // Limpeza de timers ao desmontar
   useEffect(() => {
     return () => {
       if (scriptTimerRef.current) {
@@ -335,7 +324,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
           t.surface,
         )}
       >
-        {/* scanline + vignette texture */}
         <div
           className="pointer-events-none absolute inset-0 z-20"
           style={{
@@ -345,7 +333,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
         />
         <div className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_top,transparent_40%,rgba(0,0,0,0.08))] dark:bg-[radial-gradient(ellipse_at_top,transparent_40%,rgba(0,0,0,0.5))]" />
 
-        {/* Title bar */}
         <div className="relative z-30 flex items-center justify-between bg-black/[0.04] px-4 py-2.5 dark:bg-black/30">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57] ring-1 ring-black/20" />
@@ -381,10 +368,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
           </div>
         </div>
 
-        {/* Command chip row */}
-       
-
-        {/* Output area — delimitada e preenchendo 100% da altura com scroll interno */}
         <div
           ref={outputRef}
           className="relative z-10 flex-1 min-h-0 h-full space-y-1 overflow-y-auto px-4 py-3 text-xs sm:text-sm leading-relaxed [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -401,14 +384,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
                 >
                   help
                 </button>{" "}
-                {" "}
-                {/* <button
-                  type="button"
-                  onClick={() => handleExecuteCommand("arch")}
-                  className="font-bold underline text-emerald-500 hover:text-emerald-400 cursor-pointer"
-                >
-                  arch
-                </button>{" "} */}
                 para receber a lista de comandos
               </span>
             </div>
@@ -453,7 +428,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
             })}
           </AnimatePresence>
 
-          {/* Loader ativo durante scripts demorados */}
           {busy && !typing && (
             <div className="flex items-center gap-2 text-xs text-black/50 dark:text-white/50 py-1">
               <Loader2 className="h-3.5 w-3.5 animate-spin text-emerald-500" />
@@ -461,7 +435,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
             </div>
           )}
 
-          {/* Digitação simulada */}
           {typing && (
             <div className="flex items-start gap-2">
               <ChevronRight
@@ -480,7 +453,6 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
           )}
         </div>
 
-        {/* Form de input interativo — permanece sempre disponível */}
         {!autoExecute && (
           <div className="relative z-30 overflow-hidden border-t border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-black/20">
             <form

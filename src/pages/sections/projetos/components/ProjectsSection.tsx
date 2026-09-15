@@ -65,19 +65,11 @@ function ProjectFrame({
   return (
     <div className="relative w-full max-w-[720px] p-4 sm:p-6 mt-6 lg:mt-10">
       <div>
-        {/* Canto Superior Esquerdo */}
         <span className="absolute top-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-t-4 sm:border-t-8 border-l-4 sm:border-l-8 border-white pointer-events-none" />
-
-        {/* Canto Superior Direito */}
         <span className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-t-4 sm:border-t-8 border-r-4 sm:border-r-8 border-white pointer-events-none" />
-
-        {/* Canto Inferior Esquerdo */}
         <span className="absolute bottom-0 left-0 w-6 h-6 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-l-4 sm:border-l-8 border-white pointer-events-none" />
-
-        {/* Canto Inferior Direito */}
         <span className="absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 border-b-4 sm:border-b-8 border-r-4 sm:border-r-8 border-white pointer-events-none" />
 
-        {/* Imagem */}
         <div className="overflow-hidden">
           {imageSrc && (
             <img
@@ -126,12 +118,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 
   return (
     <div className="w-full flex flex-col">
-      {/* Filtros de Projetos */}
       <div className="w-full px-2 sm:px-0 lg:ml-[4.27%]">
         <ProjectFilter activeTab={activeTab} onSelectTab={setActiveTab} />
       </div>
 
-      {/* Lista de Projetos */}
       <div className="px-2 sm:px-6 lg:p-16 gap-14 sm:gap-20 flex flex-col min-h-[450px] mx-auto w-full max-w-7xl">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, index) => {
@@ -151,7 +141,6 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   index > 0 ? "mt-12 sm:mt-16 lg:mt-20" : ""
                 }`}
               >
-                {/* Imagem Desktop quando à esquerda */}
                 {isImageLeft && (
                   <div className="hidden lg:block shrink-0">
                     <ProjectFrame
@@ -162,7 +151,6 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
                 )}
 
-                {/* Imagem Mobile */}
                 <div className="block lg:hidden w-full flex justify-center">
                   <ProjectFrame
                     imageSrc={project.imageSrc}
@@ -171,14 +159,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   />
                 </div>
 
-                {/* Informações do Projeto */}
                 <div
                   className={`mt-6 lg:mt-10 w-full max-w-lg lg:max-w-none ${
                     isImageLeft ? "lg:ml-20" : "lg:mr-20"
                   }`}
                 >
-                  <span className="text-5xl sm:text-6xl lg:text-7xl font-fraunces font-extrabold text-white/90">
-                    {project.id}
+                  <span className="text-5xl sm:text-6xl lg:text-7xl font-fraunces font-extrabold text-white">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-2xl sm:text-3xl lg:text-4xl font-space-grotesk text-white break-words mt-1">
                     {project.title}
@@ -196,7 +183,6 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
                 </div>
 
-                {/* Imagem Desktop quando à direita */}
                 {!isImageLeft && (
                   <div className="hidden lg:block shrink-0">
                     <ProjectFrame

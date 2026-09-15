@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tailwindcss-animated";
 @import "@fontsource/mea-culpa";
 @import "@fontsource/geist-sans";
 @import "@fontsource/geist-mono";
@@ -7,6 +8,7 @@
 @import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/space-grotesk";
 @import "@fontsource/space-mono";
+@import "./custom.css";
 
 @font-face {
   font-family: 'Kabel';
@@ -97,16 +99,24 @@ body {
     opacity: 1;
     }
   }
-  @keyframes terminal-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(2px);
+    @keyframes marquee-down {
+    0% {
+      transform: translateY(-50%);
     }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    100% {
+      transform: translateY(0%);
     }
-  }
+    }
+    @keyframes marquee-up {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+    }
+  --animate-marquee-down: marquee-down 25s linear infinite;
+  --animate-marquee-up: marquee-up 25s linear infinite;
 }
   .terminal-cursor::after {
     content: "|";
