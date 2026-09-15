@@ -98,13 +98,15 @@ const BUILTIN_COMMANDS: Record<string, string[]> = {
     "Isaac Machado — Desenvolvedor Full-Stack",
     "- Cristão",
     "- Engenheiro de Computação na UNIVESP",
-    "- Full-Stack capaz de criar aplicações multiplataformas",
+    "- Capaz de criar aplicações multiplataformas",
     "- I use archlinux btw",
   ],
   about: [
     "Isaac Machado — Full-Stack Developer",
-    "Computer Engineering student at UNIVESP.",
-    "Focused on modern UI, editorial design, and performance.",
+    "- Christian",
+    "- Computer Engineering student at UNIVESP",
+    "- Capable of creating cross-platform applications",
+    "- I use archlinux btw",
   ],
 };
 
