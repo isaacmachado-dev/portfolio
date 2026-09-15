@@ -11,7 +11,7 @@ const skills = [
 ];
 ---
 
-<section class="relative min-h-svh overflow-hidden bg-primary text-white">
+<section class="relative min-h-svh overflow-hidden bg-primary text-white" data-st-01="parallax" data-st-y="300">
   <div
     aria-hidden="true"
     class="pointer-events-none absolute left-[78%] top-[77%] z-0 hidden h-[65vh] min-h-[420px] w-[60vw] -translate-x-1/2 -translate-y-1/2 rotate-[31.07deg] bg-secondary lg:block"
@@ -22,7 +22,7 @@ const skills = [
     <span class="font-logo text-[clamp(2rem,2.5vw,3rem)] leading-none text-neutral-strong select-none">saac</span>
   </header>
 
-  <main class="absolute inset-0 hidden lg:block">
+  <div class="absolute inset-0 hidden lg:block">
     <h1 class="absolute left-[4.27%] top-[42.3%] z-20 text-[clamp(2.25rem,3.75vw,4.5rem)] leading-[1.2] font-bold tracking-[-0.03em] whitespace-nowrap font-fraunces">
       Full-Stack Developer
     </h1>
@@ -30,11 +30,12 @@ const skills = [
     <div class="absolute left-[10%] top-[52.9%] z-20 flex items-center gap-4">
       <a
         href="#contato"
-        class="a-02"
+        onclick="event.preventDefault(); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })"
+        class="a-02 w-fit h-10 lg:h-12 text-sm lg:text-base"
       >
-        <div class="inner font-fraunces">Conversar comigo</div>
+        <div class="inner font-fraunces px-5 lg:px-14">Conversar comigo</div>
         <div class="circle"><span>
-          <Icon name="boxicons:arrow-down-stroke" class="w-5 h-5" />
+          <Icon name="boxicons:arrow-down-stroke" class="w-4 h-4 lg:w-5 lg:h-5" />
         </span></div>
       </a>
     </div>
@@ -49,11 +50,11 @@ const skills = [
       />
     </div>
 
-    <div class="absolute left-[6.72%] top-[79.7%] z-20 flex w-[34.2vw] flex-col items-center">
+    <div class="absolute left-[6.6%] top-[79.7%] z-20 flex w-[34.2vw] flex-col items-center">
       <p class="text-[clamp(0.75rem,0.73vw,0.875rem)] font-semibold tracking-[0.08em] uppercase font-space-mono">Principais habilidades</p>
       <div class="mt-[clamp(0.5rem,1.46vw,1.55rem)] flex gap-[5.5vw]">
         {skills.map((skill) => (
-          <div class="aspect-[156/137] w-[8.13vw] rounded-[16px] lg:rounded-sm  bg-white flex flex-col items-center justify-center gap-[0.4vw] text-ink p-2 selection:bg-primary selection:text-white shadow-sm">
+          <div class="aspect-[156/137] w-[8.13vw] rounded-[16px] lg:rounded-sm bg-white flex flex-col items-center justify-center gap-[0.4vw] text-ink p-2 selection:bg-primary selection:text-white shadow-sm">
             <Icon name={skill.name} class="w-[3.5vw] h-[3.5vw]" />
             <span class="font-space-mono text-[clamp(0.6rem,0.68vw,0.8rem)] font-bold tracking-tight text-center leading-tight">
               {skill.label}
@@ -62,7 +63,7 @@ const skills = [
         ))}
       </div>
     </div>
-  </main>
+  </div>
 
   <div class="relative flex flex-col h-svh min-h-[640px] w-full overflow-hidden lg:hidden">
     <div
@@ -84,7 +85,7 @@ const skills = [
       class="pointer-events-none absolute -right-[18%] sm:-right-[8%] bottom-0 z-10 h-[80vh] max-h-[850px] w-auto max-w-none object-cover object-top select-none"
     />
 
-    <main class="relative z-20 flex flex-col justify-start px-6 sm:px-8 pt-[12vh] sm:pt-[14vh]">
+    <div class="relative z-20 flex flex-col justify-start px-6 sm:px-8 pt-[12vh] sm:pt-[14vh]">
       <h1 class="font-space-grotesk text-[2rem] sm:text-[2.25rem] font-bold tracking-[-0.03em] leading-[1.2] text-white max-w-[240px] sm:max-w-[280px]">
         Full-Stack<br />Developer
       </h1>
@@ -92,14 +93,15 @@ const skills = [
       <div class="mt-6 sm:mt-7">
         <a
           href="#contato"
-          class="a-02"
+          onclick="event.preventDefault(); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })"
+          class="a-02 w-fit h-10 lg:h-12 text-sm lg:text-base"
         >
-          <div class="inner font-fraunces w-[20%] md:w-[100%]">Conversar comigo</div>
+          <div class="inner font-fraunces px-5 lg:px-14">Conversar comigo</div>
           <div class="circle"><span>
-            <Icon name="boxicons:arrow-down-stroke" class="w-5 h-5" />
+            <Icon name="boxicons:arrow-down-stroke" class="w-4 h-4 lg:w-5 lg:h-5" />
           </span></div>
         </a>
       </div>
-    </main>
+    </div>
   </div>
 </section>

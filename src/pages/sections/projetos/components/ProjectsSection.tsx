@@ -1,7 +1,9 @@
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide";
+import { MorphIcon } from "morphicons/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import ProjectFilter from "./ProjectFilter";
+
 
 export interface AccordionItem {
   title: string;
@@ -31,14 +33,13 @@ function ProjectAccordion({ title, children }: { title: string; children: React.
 
   return (
     <div className="w-full max-w-[400px] mt-4">
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
+      <button 
+        onClick={() => setIsOpen(o => !o)} aria-expanded={isOpen}
         className="w-full min-h-[44px] bg-white flex flex-row text-black justify-between p-3 cursor-pointer select-none items-center hover:bg-neutral-100 transition-colors"
       >
         <span className="font-medium text-sm sm:text-base text-left">{title}</span>
         <span className="shrink-0 ml-2">
-          {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+          <MorphIcon icon={isOpen ? Minus : Plus} spring="bouncy"/>
         </span>
       </button>
 

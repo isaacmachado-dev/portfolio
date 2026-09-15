@@ -9,6 +9,7 @@
 @import "@fontsource-variable/space-grotesk";
 @import "@fontsource/space-mono";
 @import "./custom.css";
+@import "./textReveal.css";
 
 @font-face {
   font-family: 'Kabel';
@@ -50,6 +51,23 @@
 html,
 body {
   font-family: var(--font-sans);
+}
+
+main {
+  position: relative;
+}
+
+main > section,
+main > footer {
+  position: relative;
+  min-height: 100vh;
+  z-index: 1;
+  background-color: var(--color-primary);
+}
+
+main > section[data-st-01]:not([data-st-01="pin"]),
+main > footer[data-st-01]:not([data-st-01="pin"]) {
+  will-change: transform;
 }
 
 .font-display {

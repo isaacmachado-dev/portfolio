@@ -83,7 +83,6 @@ const BUILTIN_COMMANDS: Record<string, string[]> = {
     "  help       - Mostra esta lista de ajuda",
     "  arch       - Informações do sistema Arch Linux",
     "  sobre      - Sobre o desenvolvedor Isaac",
-    "  skills     - Principais tecnologias e ferramentas",
     "  clear      - Limpa a tela do terminal",
   ],
   arch: [
@@ -91,8 +90,8 @@ const BUILTIN_COMMANDS: Record<string, string[]> = {
     "      /  \\        Kernel: 6.12.1-arch1-1",
     "     /\\   \\       Shell: zsh 5.9",
     "    /      \\      WM: Hyprland / Wayland",
-    "   /   ,,   \\     Terminal: kitty",
-    "  /   |  |  -\\    Editor: Neovim / VS Code",
+    "   /   ,,   \\     Terminal: fish",
+    "  /   |  |  -\\    Editor: VS Code / IntelliJ",
     " /_-''    ''-_\\   Uptime: 24/7",
   ],
   sobre: [
@@ -106,11 +105,6 @@ const BUILTIN_COMMANDS: Record<string, string[]> = {
     "Isaac Machado — Full-Stack Developer",
     "Computer Engineering student at UNIVESP.",
     "Focused on modern UI, editorial design, and performance.",
-  ],
-  skills: [
-    "Frontend: TypeScript, React, Next.js, Astro, TailwindCSS",
-    "Backend: Node.js, Express, Python, REST APIs",
-    "DevOps & Tools: Linux (Arch), Git, Docker, Figma",
   ],
 };
 
@@ -311,7 +305,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
     <div
       className={cn(
         "group relative w-full font-mono rounded-(--terminal-radius) flex flex-col h-full min-h-0",
-        "[--terminal-radius:1rem]",
+        "[--terminal-radius:2px]",
         t.glow,
         className,
       )}

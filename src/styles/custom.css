@@ -1,16 +1,15 @@
 .a-02 {
     color: hsl(240, 14%, 7%);
     position: relative;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    height: 48px;
 }
 
 .a-02 .inner,
 .a-02 .circle {
     background-color: hsl(0, 0%, 100%);
     border-radius: 999px;
-    height: 48px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +19,6 @@
 
 .a-02 .inner {
     width: 100%;
-    padding-inline: 60px;
     position: relative;
     z-index: 1;
 }
@@ -28,7 +26,7 @@
 .a-02 .circle {
     position: absolute;
     right: 0;
-    width: 48px;
+    aspect-ratio: 1;
     scale: 0;
     transform-origin: left center;
 }
@@ -43,7 +41,13 @@
 }
 
 .a-02:hover .inner {
-    width: calc(100% - 52px);
+    width: calc(100% - 44px);
+}
+
+@media (min-width: 1024px) {
+    .a-02:hover .inner {
+        width: calc(100% - 52px);
+    }
 }
 
 .a-02:hover .circle {

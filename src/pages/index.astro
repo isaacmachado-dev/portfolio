@@ -1,12 +1,12 @@
 ---
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from "@vercel/speed-insights/astro";
 import '../styles/global.css';
 import Contato from './sections/contato/Contato.astro';
 import Educacao from './sections/educacao/Educacao.astro';
 import Habilidades from "./sections/habilidades/Habilidades.astro";
 import Hero from "./sections/hero/Hero.astro";
 import Projetos from './sections/projetos/Projetos.astro';
-import SpeedInsights from "@vercel/speed-insights/astro"
-import Analytics from '@vercel/analytics/astro'
 ---
 <html lang="pt-BR" class="scroll-smooth">
   <head>
@@ -19,20 +19,21 @@ import Analytics from '@vercel/analytics/astro'
     <meta name="description" content="Desenvolvedor Full-Stack" />
     <title>Isaac Machado</title>
   </head>
-  <body class="bg-primary text-white antialiased overflow-x-hidden selection:bg-neutral selection:text-ink">
-    <Hero data-st-01="parallax"/>
-    <Habilidades data-st-01="pin"/>
-    <Educacao data-st-01="parallax"/>
-    <Projetos data-st-01="pin"/>
-    <Contato data-st-01="parallax"/>
+  <body class="bg-primary text-white antialiased selection:bg-neutral selection:text-ink">
+    <main>
+      <Hero  />
+      <Habilidades />
+      <Educacao />
+      <Projetos />
+      <Contato />
+    </main>
 
-    <SpeedInsights/>
-    <Analytics/>
+    <SpeedInsights />
+    <Analytics />
 
-  <script>
-    import sectionTransition01 from '@/components/ui/parallax.js';
-    sectionTransition01();
-  </script>
-
+    <script>
+      import sectionTransition01 from '@/components/ui/parallax.js';
+      sectionTransition01();
+    </script>
   </body>
 </html>

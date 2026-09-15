@@ -1,0 +1,26 @@
+[data-reveal-01] {
+  visibility: hidden;
+}
+
+[data-reveal-01] > * {
+  margin-bottom: -0.18em;
+}
+
+.word-mask,
+.char-mask {
+  vertical-align: top;
+}
+
+.line-mask,
+.word-mask,
+.char-mask {
+  overflow: clip;
+  overflow-clip-margin: 0.06em;
+}
+
+.line-mask > *,
+.word-mask > *,
+.char-mask > * {
+  padding-bottom: 0.18em;
+  will-change: transform;
+}
