@@ -1,7 +1,7 @@
 # Educação — `src/pages/sections/educacao/`
 
 ## Estrutura
-- `Educacao.astro`: Seção container com cabeçalho enumerado (`03/`), título serifado (`Fraunces`) e divisor horizontal.
+- `Fundamentos.astro`: Seção container com cabeçalho enumerado (`03/`), título serifado (`Fraunces`) e divisor horizontal.
 - `components/EducacaoFrame.astro`: Container com moldura técnica (cantos reforçados nos 4 vértices), linha do tempo vertical contínua conectora e suporte a múltiplos itens via props ou slot.
 - `components/EducacaoItem.astro`: Item atômico da linha do tempo contendo o marcador circular, card branco com ícone e texto (`font-space-grotesk` / `font-space-mono`), e o período/ano alinhado à direita.
 

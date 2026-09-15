@@ -40,40 +40,40 @@ type ThemeTokens = {
 
 const THEMES: Record<string, ThemeTokens> = {
   default: {
-    glow: "shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] dark:shadow-[0_0_12px_-10px_rgba(16,185,129,0.15)]",
+    glow: "shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)]",
     surface:
-      "from-emerald-50/70 to-stone-100 text-emerald-700 dark:from-[#0a0f0d] dark:to-[#050807] dark:text-emerald-300",
-    promptText: "text-emerald-600 dark:text-emerald-300",
+      "from-emerald-50/70 to-stone-100 text-emerald-700",
+    promptText: "text-emerald-600",
     accentText: "text-emerald-500",
     accentBg: "bg-emerald-500",
-    ring: "ring-emerald-600/30 dark:ring-emerald-300/25",
+    ring: "ring-emerald-600/30",
   },
   sky: {
-    glow: "shadow-[0_0_30px_-15px_rgba(56,189,248,0.15)] dark:shadow-[0_0_12px_-10px_rgba(56,189,248,0.15)]",
+    glow: "shadow-[0_0_30px_-15px_rgba(56,189,248,0.15)]",
     surface:
-      "from-sky-50/70 to-stone-100 text-sky-700 dark:from-[#080b12] dark:to-[#04060a] dark:text-sky-300",
-    promptText: "text-sky-600 dark:text-sky-300",
+      "from-sky-50/70 to-stone-100 text-sky-700",
+    promptText: "text-sky-600",
     accentText: "text-sky-500",
     accentBg: "bg-sky-500",
-    ring: "ring-sky-600/30 dark:ring-sky-300/25",
+    ring: "ring-sky-600/30",
   },
   synthwave: {
-    glow: "shadow-[0_0_30px_-15px_rgba(217,70,239,0.15)] dark:shadow-[0_0_12px_-10px_rgba(217,70,239,0.15)]",
+    glow: "shadow-[0_0_30px_-15px_rgba(217,70,239,0.15)]",
     surface:
-      "from-fuchsia-50/70 to-stone-100 text-fuchsia-700 dark:from-[#0d020f] dark:to-[#050106] dark:text-fuchsia-400",
-    promptText: "text-fuchsia-600 dark:text-fuchsia-300",
+      "from-fuchsia-50/70 to-stone-100 text-fuchsia-700",
+    promptText: "text-fuchsia-600",
     accentText: "text-fuchsia-500",
     accentBg: "bg-fuchsia-500",
-    ring: "ring-fuchsia-600/30 dark:ring-fuchsia-300/25",
+    ring: "ring-fuchsia-600/30",
   },
   retro: {
-    glow: "shadow-[0_0_30px_-15px_rgba(245,158,11,0.15)] dark:shadow-[0_0_12px_-12px_rgba(245,158,11,0.15)]",
+    glow: "shadow-[0_0_30px_-15px_rgba(245,158,11,0.15)]",
     surface:
-      "from-amber-50/70 to-stone-100 text-amber-700 dark:from-[#140d02] dark:to-[#0a0600] dark:text-amber-300",
-    promptText: "text-amber-600 dark:text-amber-300",
+      "from-amber-50/70 to-stone-100 text-amber-700",
+    promptText: "text-amber-600",
     accentText: "text-amber-500",
     accentBg: "bg-amber-500",
-    ring: "ring-amber-600/40 dark:ring-amber-300/25",
+    ring: "ring-amber-600/40",
   },
 };
 
@@ -97,8 +97,8 @@ const BUILTIN_COMMANDS: Record<string, string[]> = {
   sobre: [
     "Isaac Machado — Desenvolvedor Full-Stack",
     "- Cristão",
-    "- Engenheiro da Computação na UNIVESP",
-    "- Focado em interfaces modernas, design e alta performance",
+    "- Engenheiro de Computação na UNIVESP",
+    "- Full-Stack capaz de criar aplicações multiplataformas",
     "- I use archlinux btw",
   ],
   about: [
@@ -282,10 +282,10 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
   };
 
   const status = busy
-    ? { label: "executando", color: "bg-amber-500 dark:bg-amber-400" }
+    ? { label: "executando", color: "bg-amber-500" }
     : completed
-      ? { label: "success", color: "bg-emerald-500 dark:bg-emerald-400" }
-      : { label: "cold", color: "bg-zinc-400 dark:bg-zinc-500" };
+      ? { label: "success", color: "bg-emerald-500" }
+      : { label: "cold", color: "bg-zinc-400" };
 
   const lineKind = (line: string) => {
     if (line.startsWith(promptSymbol)) return "command" as const;
@@ -299,7 +299,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
   };
 
   const buttonClasses =
-    "flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs text-black/60 transition-colors hover:bg-black/10 hover:text-black dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white";
+    "flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs text-black/60 transition-colors hover:bg-black/10 hover:text-black";
 
   return (
     <div
@@ -325,23 +325,23 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
               "repeating-linear-gradient(0deg, color-mix(in srgb, currentColor 6%, transparent) 0px, transparent 1px, transparent 3px)",
           }}
         />
-        <div className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_top,transparent_40%,rgba(0,0,0,0.08))] dark:bg-[radial-gradient(ellipse_at_top,transparent_40%,rgba(0,0,0,0.5))]" />
+        <div className="pointer-events-none absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_top,transparent_40%,rgba(0,0,0,0.08))]" />
 
-        <div className="relative z-30 flex items-center justify-between bg-black/[0.04] px-4 py-2.5 dark:bg-black/30">
+        <div className="relative z-30 flex items-center justify-between bg-black/[0.04] px-4 py-2.5">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#ff5f57] ring-1 ring-black/20" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e] ring-1 ring-black/20" />
             <span className="h-3 w-3 rounded-full bg-[#28c840] ring-1 ring-black/20" />
           </div>
 
-          <div className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 items-center gap-1.5 text-xs text-black/50 dark:text-white/50">
+          <div className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 items-center gap-1.5 text-xs text-black/80">
             {icon}
             <span className="max-w-28 xs:max-w-36 sm:max-w-none truncate tracking-wide">
               {title}
             </span>
           </div>
 
-          <div className="flex w-fit items-center gap-1.5 rounded-full border border-black/10 bg-black/[0.04] px-2 py-0.5 text-[9px] sm:text-[10px] uppercase tracking-wider whitespace-nowrap text-black/60 dark:border-white/10 dark:bg-black/30 dark:text-white/60">
+          <div className="flex w-fit items-center gap-1.5 rounded-full border border-black/10 bg-black/[0.04] px-2 py-0.5 text-[9px] sm:text-[10px] uppercase tracking-wider whitespace-nowrap text-black/60">
             <span className="relative flex h-1.5 w-1.5 flex-shrink-0">
               {busy && (
                 <span
@@ -367,7 +367,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
           className="relative z-10 flex-1 min-h-0 h-full space-y-1 overflow-y-auto px-4 py-3 text-xs sm:text-sm leading-relaxed [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {output.length === 0 && !typing && (
-            <div className="flex h-full flex-col items-center justify-center gap-2 text-black/30 dark:text-white/30 text-center py-6">
+            <div className="flex h-full flex-col items-center justify-center gap-2 text-black/50 text-center py-6">
               <TerminalIcon className="h-5 w-5 opacity-40" />
               <span className="text-xs">
                 Digite{" "}
@@ -398,19 +398,17 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
                     {kind === "command" ? (
                       <ChevronRight className={cn("h-3.5 w-3.5", t.accentText)} />
                     ) : kind === "success" ? (
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 dark:text-emerald-400" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
                     ) : (
-                      <Circle className="h-1.5 w-1.5 translate-y-1.5 text-black/20 dark:text-white/20" />
+                      <Circle className="h-1.5 w-1.5 translate-y-1.5 text-black/20" />
                     )}
                   </span>
                   <pre
                     className={cn(
                       "whitespace-pre-wrap break-words font-mono text-xs sm:text-sm",
-                      kind === "command" &&
-                        "font-semibold text-zinc-900 dark:text-white",
-                      kind === "step" && "text-zinc-600 dark:text-white/70",
-                      kind === "success" &&
-                        "font-medium text-emerald-600 dark:text-emerald-300",
+                      kind === "command" && "font-semibold text-zinc-900",
+                      kind === "step" && "text-zinc-600",
+                      kind === "success" && "font-medium text-emerald-600",
                     )}
                   >
                     {kind === "command"
@@ -423,7 +421,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
           </AnimatePresence>
 
           {busy && !typing && (
-            <div className="flex items-center gap-2 text-xs text-black/50 dark:text-white/50 py-1">
+            <div className="flex items-center gap-2 text-xs text-black/50 py-1">
               <Loader2 className="h-3.5 w-3.5 animate-spin text-emerald-500" />
               executando…
             </div>
@@ -434,7 +432,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
               <ChevronRight
                 className={cn("mt-0.5 h-3.5 w-3.5 flex-shrink-0", t.accentText)}
               />
-              <pre className="whitespace-pre-wrap font-semibold text-zinc-900 dark:text-white font-mono text-xs sm:text-sm">
+              <pre className="whitespace-pre-wrap font-semibold text-zinc-900 font-mono text-xs sm:text-sm">
                 {input}
                 <span
                   className={cn(
@@ -448,10 +446,10 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
         </div>
 
         {!autoExecute && (
-          <div className="relative z-30 overflow-hidden border-t border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-black/20">
+          <div className="relative z-30 overflow-hidden border-t border-black/5 bg-black/[0.02]">
             <form
               onSubmit={handleSubmit}
-              className="m-2 flex items-center gap-2 rounded-lg border border-black/10 bg-black/[0.03] px-3 py-1.5 transition-colors focus-within:border-black/25 dark:border-white/10 dark:bg-black/40 dark:focus-within:border-white/25"
+              className="m-2 flex items-center gap-2 rounded-lg border border-black/10 bg-black/[0.03] px-3 py-1.5 transition-colors focus-within:border-black/25"
             >
               <span className={cn("font-bold text-xs", t.promptText)}>
                 {promptSymbol}
@@ -461,7 +459,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
                 value={input}
                 disabled={busy}
                 onChange={(e) => setInput(e.target.value)}
-                className="flex-grow bg-transparent text-xs sm:text-sm text-zinc-900 placeholder:text-black/30 focus:outline-none disabled:opacity-50 dark:text-white dark:placeholder:text-white/25"
+                className="flex-grow bg-transparent text-xs sm:text-sm text-zinc-900 placeholder:text-black/50 focus:outline-none disabled:opacity-50"
                 placeholder={inputPlaceholder}
               />
               <button
