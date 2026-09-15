@@ -11,7 +11,7 @@
     "accordions": [
       {
         "title": "Descrição",
-        "content": "Um site de um petshop, com agendamento para o cliente e uma tela administrativa."
+        "content": "Uma landing page de um petshop com agendamento para o cliente e um CRM admin completo para a dona."
       },
       {
         "title": "Minha função",
@@ -35,7 +35,7 @@
     "accordions": [
       {
         "title": "Descrição",
-        "content": "Um aplicativo nativo para distros Linux, Windows e MacOS focado em ajudar a batida de pontos pelos funcionários, moderno e escalável."
+        "content": "Um aplicativo nativo para Windows, Linux e MacOS focado em ajudar a batida de pontos pelos funcionários, moderno e escalável."
       },
       {
         "title": "Minha função",
@@ -111,11 +111,11 @@
       },
       {
         "title": "Minha função",
-        "content": "Front-END, Back-END, AI API, FlaskAPI."
+        "content": "Front-END, Back-END, AI API."
       },
       {
         "title": "Código fonte",
-        "content": "TypeScript, Python, React, CSS, FlaskAPI, Tensorflow, Numpy, Transformers"
+        "content": "TypeScript, Python, React, CSS, Flask, Tensorflow, Numpy, Transformers"
       }
     ]
   },
@@ -131,7 +131,7 @@
     "accordions": [
       {
         "title": "Descrição",
-        "content": "Um jogo feito em 2 dias de hackathon, onde você controla o Thor com o objetivo de esquivar dos cogumelos pelo mapa."
+        "content": "Um jogo feito em 2 dias de hackathon, onde você controla o Thor com o objetivo de esquivar dos cogumelos pelo mapa pq não tive tempo de fazer ele bater nos inimigos KKKKKKKK."
       },
       {
         "title": "Minha função",
