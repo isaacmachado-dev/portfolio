@@ -15,7 +15,7 @@
       },
       {
         "title": "Minha função",
-        "content": "Front-END, Back-END, UI/UX Design, Banco de Dados, DEV-Ops e entrevistador."
+        "content": "Front-END, Back-END, UI/UX Design, Banco de Dados em PostgreSQL, DEV-Ops e entrevistador."
       },
       {
         "title": "Código fonte",
@@ -136,6 +136,54 @@
       {
         "title": "Minha função",
         "content": "Front-END, Back-END, Game Design, animações."
+      },
+      {
+        "title": "Código fonte",
+        "content": "Python"
+      }
+    ]
+  },
+  {
+    "id": "07",
+    "title": "Pentest Bank",
+    "category": "Website",
+    "tags": ["estudos"],
+    "image": "transaction-pentest-bank.png",
+    "alt": "Pentest Bank",
+    "height": 368,
+    "alignment": "right",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Um potótipo de simulação de um internet banking com um ataque didático acontecendo durante uma transação, para fins de estudo e aprendizado de seguranças de transações."
+      },
+      {
+        "title": "Minha função",
+        "content": "Front-END, Back-END, UI/UX Design, Banco de Dados em PostgreSQL."
+      },
+      {
+        "title": "Código fonte",
+        "content": "Ruby on Rails, PostgreSQL, TailwindCSS, JavaScript, HTML, CSS"
+      }
+    ]
+  },
+  {
+    "id": "08",
+    "title": "Fila bancária",
+    "category": "Website",
+    "tags": ["estudos"],
+    "image": "fila-bancaria.png",
+    "alt": "Fila bancária",
+    "height": 368,
+    "alignment": "left",
+    "accordions": [
+      {
+        "title": "Descrição",
+        "content": "Um TUI prototipando uma fila bancária, com opções de inserir clientes expondo o atendimento ordenado de acordo com a ordem de chegada e prioritários 65+."
+      },
+      {
+        "title": "Minha função",
+        "content": "Desenvolvimento de aplicação no terminal, lógica aplicada de fila de atendimento."
       },
       {
         "title": "Código fonte",
