@@ -151,7 +151,7 @@
     "image": "transaction-pentest-bank.png",
     "alt": "Pentest Bank",
     "height": 368,
-    "alignment": "right",
+    "alignment": "left",
     "accordions": [
       {
         "title": "Descrição",
@@ -175,7 +175,7 @@
     "image": "fila-bancaria.png",
     "alt": "Fila bancária",
     "height": 368,
-    "alignment": "left",
+    "alignment": "right",
     "accordions": [
       {
         "title": "Descrição",
