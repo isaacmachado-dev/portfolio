@@ -15,7 +15,7 @@
       },
       {
         "title": "Minha função",
-        "content": "Front-END, Back-END, WEB Design, Banco de Dados, DEV-Ops e entrevistador."
+        "content": "Front-END, Back-END, UI/UX Design, Banco de Dados, DEV-Ops e entrevistador."
       },
       {
         "title": "Código fonte",
@@ -39,11 +39,11 @@
       },
       {
         "title": "Minha função",
-        "content": "UI/UX Design, Front-END, Arquitetura e Engenharia de Software."
+        "content": "UI/UX Design, Front-END, Back-END, DEV-Ops."
       },
       {
         "title": "Código fonte",
-        "content": "TypeScript, React, TailwindCSS"
+        "content": "Tauri, Rust, TypeScript, React, TailwindCSS"
       }
     ]
   },
@@ -63,7 +63,7 @@
       },
       {
         "title": "Minha função",
-        "content": "Front-END, WEB Design, DEV-Ops."
+        "content": "Front-END, UI/UX Design, DEV-Ops."
       },
       {
         "title": "Código fonte",
@@ -87,11 +87,11 @@
       },
       {
         "title": "Minha função",
-        "content": "Front-END, Back-END, API Instagram, DEV-Ops e entrevistador."
+        "content": "Front-END, Back-END, UI/UX Design, API Instagram, DEV-Ops e entrevistador."
       },
       {
         "title": "Código fonte",
-        "content": "HTML, CSS, JavaScript"
+        "content": "HTML, CSS, JavaScript, Node.Js, Express, PostgreSQL"
       }
     ]
   },
