@@ -2,7 +2,7 @@ import { Minus, Plus } from "lucide";
 import { ArrowUpRight } from "lucide-react";
 import { MorphIcon } from "morphicons/react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectFilter from "./ProjectFilter";
 
 
@@ -32,6 +32,10 @@ interface ProjectsSectionProps {
 
 function ProjectAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    window.dispatchEvent(new Event("resize"));
+  }, [isOpen]);
 
   return (
     <div className="w-full max-w-[400px] mt-4">
@@ -154,6 +158,19 @@ function ProjectFrame({
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [activeTab, setActiveTab] = useState("destaques");
+
+  useEffect(() => {
+    const t1 = setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 120);
+    const t2 = setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 380);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [activeTab]);
 
   const filteredProjects = projects.filter((project) => {
     if (activeTab === "todos") return true;

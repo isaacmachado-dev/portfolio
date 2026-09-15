@@ -12,7 +12,7 @@ export function textReveal01(scope = document, delay = 0, { ignoreManual = false
     words: { duration: 1, stagger: 0.03, ease: "expo.out" },
     chars: { duration: 0.6, stagger: 0.01, ease: "expo.out" },
     scrollStart: "top 72%",
-    revealScrollStart: "bottom 85%",
+    revealScrollStart: "bottom 35%",
     scrubStart: "top 80%",
     scrubEnd: "top 20%",
     once: false,

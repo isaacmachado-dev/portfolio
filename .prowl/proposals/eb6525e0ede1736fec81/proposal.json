@@ -1,0 +1,27 @@
+{
+  "id": "eb6525e0ede1736fec81",
+  "operation": "create",
+  "target_path": "animations/parallax_reveal.md",
+  "candidate_path": "eb6525e0ede1736fec81/candidate.md",
+  "status": "accepted",
+  "created_at": "2026-09-15T20:56:47Z",
+  "reviewed_at": "2026-09-15T20:56:56Z",
+  "decision": {
+    "schema_version": "prowl.knowledge-decision/v1",
+    "proposal_id": "eb6525e0ede1736fec81",
+    "action": "accept",
+    "idempotency_key": "de9f825bd7e62abacd957fb8d05801cc920776892d0c929d7a5a8d7f7deccf69",
+    "principal_id": "local-operator",
+    "expected_version": "bf915837855d4e9a91798b788a0ecbbd73cecd91840b08271fa06c97a5fb187b",
+    "version_before": "bf915837855d4e9a91798b788a0ecbbd73cecd91840b08271fa06c97a5fb187b",
+    "version_after": "549e304f7d0d0e1b2d6168d51d18fd82b63df8e10fbbb23eee2f824523a4399e",
+    "decided_at": "2026-09-15T20:56:56.069296282Z",
+    "rollback": {
+      "paths": [
+        "animations/parallax_reveal.md",
+        "index.md",
+        "log.md"
+      ]
+    }
+  }
+}
