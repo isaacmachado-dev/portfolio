@@ -27,7 +27,7 @@
   {
     "id": "02",
     "title": "onPoint",
-    "link": "https://github.com/isaacmachado-dev/app.onpoint",
+    "link": "https://www.github.com/isaacmachado-dev/app.onpoint",
     "category": "Programa nativo PC",
     "tags": ["destaques", "reais"],
     "image": "onpoint.png",
@@ -102,7 +102,7 @@
   {
     "id": "05",
     "title": "Jogo da velha",
-    "link": "https://github.com/isaacmachado-dev/jogo-da-velha",
+    "link": "https://www.github.com/isaacmachado-dev/jogo-da-velha",
     "category": "Website",
     "tags": ["estudos"],
     "image": "jogo-da-velha.png",
@@ -127,7 +127,7 @@
   {
     "id": "06",
     "title": "The Legend of Thor",
-    "link": "https://github.com/isaacmachado-dev/thor-game",
+    "link": "https://www.github.com/isaacmachado-dev/thor-game",
     "category": "Game nativo PC",
     "tags": ["estudos"],
     "image": "thor-game-2.png",
@@ -152,7 +152,7 @@
   {
     "id": "07",
     "title": "Pentest Bank",
-    "link": "https://github.com/isaacmachado-dev/pentest-bank",
+    "link": "https://www.github.com/isaacmachado-dev/pentest-bank",
     "category": "Website",
     "tags": ["estudos"],
     "image": "transaction-pentest-bank.png",
@@ -177,7 +177,7 @@
   {
     "id": "08",
     "title": "Fila bancária",
-    "link": "https://github.com/isaacmachado-dev/fila-bancaria",
+    "link": "https://www.github.com/isaacmachado-dev/fila-bancaria",
     "category": "Website",
     "tags": ["estudos"],
     "image": "fila-bancaria.png",

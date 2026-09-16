@@ -229,6 +229,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       imageSrc={project.imageSrc}
                       alt={project.alt || project.title}
                       height={project.height ?? 368}
+                      link={project.link}
                     />
                   </div>
                 )}
@@ -238,6 +239,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     imageSrc={project.imageSrc}
                     alt={project.alt || project.title}
                     height={project.height ?? 360}
+                    link={project.link}
                   />
                 </div>
 
@@ -250,7 +252,18 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-2xl sm:text-3xl lg:text-4xl font-space-grotesk text-white break-words mt-1">
-                    {project.title}
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline underline-offset-4"
+                      >
+                        {project.title}
+                      </a>
+                    ) : (
+                      project.title
+                    )}
                   </h3>
                   <p className="text-xs sm:text-sm font-semibold tracking-[0.08em] uppercase text-neutral font-space-mono mt-1">
                     {project.category}
@@ -271,6 +284,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       imageSrc={project.imageSrc}
                       alt={project.alt || project.title}
                       height={project.height ?? 360}
+                      link={project.link}
                     />
                   </div>
                 )}
