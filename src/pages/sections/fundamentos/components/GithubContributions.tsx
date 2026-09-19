@@ -139,7 +139,7 @@ export default function GithubContributions({
               }}
               className="pointer-events-none absolute top-0 left-0 z-30 hidden sm:flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-ink shadow-2xl font-space-grotesk tracking-wide"
             >
-              <span>Ver GitHub</span>
+              <span>Nova aba</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </motion.div>
           )}
