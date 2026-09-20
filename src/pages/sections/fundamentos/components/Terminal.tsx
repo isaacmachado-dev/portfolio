@@ -1,4 +1,9 @@
-import InteractiveTerminal from "@/components/ui/terminal";
+import InteractiveTerminal, {
+  DEFAULT_COMMANDS,
+  type CommandConfig,
+  type TerminalCommands,
+  type TerminalProps,
+} from "@/components/ui/terminal";
 import { Coffee } from "lucide-react";
 
 export function TerminalDemo2() {
@@ -31,3 +36,19 @@ Enjoy your coffee and have a wonderful day!
     </div>
   );
 }
+
+export function FundamentosTerminal(props: TerminalProps) {
+  return (
+    <InteractiveTerminal
+      title="isaac@arch"
+      inputPlaceholder="Escreva o comando..)"
+      stepDelay={400}
+      {...props}
+    />
+  );
+}
+
+export default FundamentosTerminal;
+export { DEFAULT_COMMANDS, InteractiveTerminal, FundamentosTerminal as Terminal };
+export type { CommandConfig, TerminalCommands, TerminalProps };
+

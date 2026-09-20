@@ -12,10 +12,19 @@ import { AnimatePresence, motion } from "motion/react";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+export type CommandConfig = {
+  description?: string;
+  steps?: string[];
+  output?: string[] | string;
+};
+
+export type TerminalCommands = Record<string, CommandConfig | string[]>;
+
 export type TerminalProps = {
   command?: string;
   steps?: string[];
   finalMessage?: string;
+  commands?: TerminalCommands;
   stepDelay?: number;
   typingDelay?: number;
   icon?: React.ReactNode;
@@ -77,48 +86,139 @@ const THEMES: Record<string, ThemeTokens> = {
   },
 };
 
-const BUILTIN_COMMANDS: Record<string, string[]> = {
-  help: [
-    "Comandos disponíveis:",
-    "  help       - Mostra esta lista de ajuda",
-    "  arch       - Informações do sistema Arch Linux",
-    "  sobre      - Sobre o desenvolvedor Isaac",
-    "  clear      - Limpa a tela do terminal",
-  ],
-  arch: [
-    "       /\\         OS: Arch Linux x86_64",
-    "      /  \\        Kernel: 6.12.1-arch1-1",
-    "     /\\   \\       Shell: zsh 5.9",
-    "    /      \\      WM: Hyprland / Wayland",
-    "   /   ,,   \\     Terminal: fish",
-    "  /   |  |  -\\    Editor: VS Code / IntelliJ",
-    " /_-''    ''-_\\   Uptime: 24/7",
-  ],
-  sobre: [
-    "Isaac Machado — Desenvolvedor Full-Stack",
-    "- Cristão",
-    "- Engenheiro de Computação na UNIVESP",
-    "- Capaz de criar aplicações multiplataformas",
-    "- I use archlinux btw",
-  ],
-  about: [
-    "Isaac Machado — Full-Stack Developer",
-    "- Christian",
-    "- Computer Engineering student at UNIVESP",
-    "- Capable of creating cross-platform applications",
-    "- I use archlinux btw",
-  ],
+export const DEFAULT_COMMANDS: Record<string, CommandConfig> = {
+  help: {
+    description: "Mostra esta lista de ajuda",
+    output: [
+      "Comandos disponíveis:",
+      "  arch       - Informações do sistema ArchLinux",
+      "  sobre      - Sobre o desenvolvedor Isaac",
+      "  cafe       - Prepara um café quentinho",
+      "  clear      - Limpa a tela do terminal",
+    ],
+  },
+  arch: {
+    description: "Informações do sistema Arch Linux",
+    steps: [
+      "Iniciando diagnóstico do sistema...",
+      "Detectando arquitetura de hardware (x86_64)...",
+      "Consultando módulos do kernel Linux 6.12...",
+      "Carregando compositor Hyprland / Wayland...",
+      "Gerando informações do sistema...",
+    ],
+    output: [
+      "Informações do sistema carregadas:",
+      "       /\\         OS: Arch Linux x86_64",
+      "      /  \\        Kernel: 6.12.1-arch1-1",
+      "     /\\   \\       Shell: zsh 5.9",
+      "    /      \\      WM: Hyprland / Wayland",
+      "   /   ,,   \\     Terminal: fish",
+      "  /   |  |  -\\    Editor: VS Code / IntelliJ",
+      " /_-''    ''-_\\   User: isawc",
+    ],
+  },
+  sobre: {
+    description: "Sobre o desenvolvedor Isaac",
+    steps: [
+      "Acessando base de dados biográfica...",
+      "Carregando formação acadêmica (UNIVESP)...",
+      "Indexando stack técnica e definindo capacidades...",
+      "Compilando perfil de desenvolvedor...",
+    ],
+    output: [
+      "Perfil DEV carregado! ✨",
+      "Isaac Machado — Engenheiro de Computação & Full-Stack Developer",
+      "- Cristão",
+      "- Capaz de criar aplicações multiplataformas completas",
+      "- I use archlinux btw",
+    ],
+  },
+  about: {
+    description: "About the developer Isaac",
+    steps: [
+      "Accessing biographical database...",
+      "Loading academic credentials (UNIVESP)...",
+      "Indexing tech stack and skills...",
+      "Compiling developer profile...",
+    ],
+    output: [
+      "DEV Profile loaded! ✨",
+      "Isaac Machado — Computer Engineer & Full-Stack Developer",
+      "- Christian",
+      "- Capable of creating cross-platform applications",
+      "- I use archlinux btw",
+    ],
+  },
+  cafe: {
+    description: "Prepara um café quentinho",
+    steps: [
+      "Recebendo pedido de café...",
+      "Moendo grãos frescos selecionados...",
+      "Aquecendo água a 90°C...",
+      "Extraindo o café...",
+      "Adoçando o café...",
+    ],
+    output: [
+      "PEDIDO FINALIZADO! ☕",
+      "Seu café está pronto:",
+      "- Café pilão já adoçado",
+      "Aproveite seu café e tenha um excelente dia!",
+    ],
+  },
+  coffee: {
+    description: "Brew a fresh coffee",
+    steps: [
+      "Taking your order...",
+      "Grinding fresh beans...",
+      "Heating water to 194°F...",
+      "Extracting coffee...",
+      "Adding sweetener...",
+    ],
+    output: [
+      "ORDER COMPLETE! ☕",
+      "Your perfect latte is ready:",
+      "- Coffee pilão already sweetened",
+      "Enjoy your coffee and have a wonderful day!",
+    ],
+  },
+  brew: {
+    description: "Brew a fresh coffee",
+    steps: [
+      "Taking your order...",
+      "Grinding fresh beans...",
+      "Heating water to 194°F...",
+      "Extracting coffee...",
+      "Adding sweetener...",
+    ],
+    output: [
+      "☕ ORDER COMPLETE! ☕",
+      "Your perfect latte is ready:",
+      "- Coffee pilão already sweetened",
+      "Enjoy your coffee and have a wonderful day!",
+    ],
+  },
+};
+
+export const BUILTIN_COMMANDS = DEFAULT_COMMANDS;
+
+export type OutputKind = "command" | "step" | "output" | "success" | "error";
+
+export type OutputLine = {
+  id: string;
+  text: string;
+  kind: OutputKind;
 };
 
 const InteractiveTerminal: React.FC<TerminalProps> = ({
   command = "help",
   steps,
   finalMessage,
-  stepDelay = 800,
+  commands,
+  stepDelay = 500,
   typingDelay = 80,
   icon = <TerminalIcon className="h-4 w-4" />,
   promptSymbol = ">",
-  inputPlaceholder = "Digite um comando… (tente 'help' ou 'arch')",
+  inputPlaceholder = "Digite o comando...",
   autoExecute = false,
   repeat = false,
   repeatDelay = 3000,
@@ -127,7 +227,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
   variant = "default",
 }) => {
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState<string[]>([]);
+  const [output, setOutput] = useState<OutputLine[]>([]);
   const [busy, setBusy] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -153,7 +253,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
   }, []);
 
   const runCustomSteps = useCallback(
-    (customSteps: string[], finalMsg?: string) => {
+    (customSteps: string[], finalMsg?: string[] | string) => {
       setBusy(true);
       setCompleted(false);
       let stepIndex = 0;
@@ -165,7 +265,14 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
       scriptTimerRef.current = setInterval(() => {
         if (stepIndex < customSteps.length) {
           const currentStep = customSteps[stepIndex];
-          setOutput((prev) => [...prev, currentStep]);
+          setOutput((prev) => [
+            ...prev,
+            {
+              id: `${Date.now()}-step-${stepIndex}-${Math.random().toString(36).slice(2, 6)}`,
+              text: currentStep,
+              kind: "step",
+            },
+          ]);
           stepIndex++;
         } else {
           if (scriptTimerRef.current) {
@@ -173,7 +280,23 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
             scriptTimerRef.current = null;
           }
           if (finalMsg) {
-            setOutput((prev) => [...prev, finalMsg]);
+            const outputs = Array.isArray(finalMsg) ? finalMsg : [finalMsg];
+            const newLines: OutputLine[] = outputs.map((out, idx) => {
+              const isSuccess =
+                out.includes("PEDIDO FINALIZADO") ||
+                out.includes("Informações do sistema carregadas") ||
+                out.includes("ORDER COMPLETE") ||
+                out.includes("Perfil DEV carregado") ||
+                out.includes("DEV PROFILE LOADED") ||
+                out.includes("successfully") ||
+                out.includes("Comandos disponíveis");
+              return {
+                id: `${Date.now()}-out-${idx}-${Math.random().toString(36).slice(2, 6)}`,
+                text: out,
+                kind: isSuccess ? "success" : "output",
+              };
+            });
+            setOutput((prev) => [...prev, ...newLines]);
           }
           setBusy(false);
           setCompleted(true);
@@ -190,32 +313,105 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
 
       const lower = trimmed.toLowerCase();
 
-      if (lower === "clear") {
+      if (lower === "clear" || lower === "cls") {
+        if (scriptTimerRef.current) {
+          clearInterval(scriptTimerRef.current);
+          scriptTimerRef.current = null;
+        }
         setOutput([]);
+        setBusy(false);
         setCompleted(true);
         return;
       }
 
-      setOutput((prev) => [...prev, `${promptSymbol} ${trimmed}`]);
+      // Add command to output
+      setOutput((prev) => [
+        ...prev,
+        {
+          id: `${Date.now()}-cmd-${Math.random().toString(36).slice(2, 6)}`,
+          text: trimmed,
+          kind: "command",
+        },
+      ]);
 
-      if (steps && steps.length > 0 && (lower === command.toLowerCase() || !BUILTIN_COMMANDS[lower])) {
+      const activeCommands = { ...DEFAULT_COMMANDS, ...commands };
+      const matchedCmd = activeCommands[lower];
+
+      // "help" doesn't need steps!
+      if (lower === "help") {
+        const helpOutput = matchedCmd
+          ? Array.isArray(matchedCmd)
+            ? matchedCmd
+            : matchedCmd.output
+          : DEFAULT_COMMANDS.help.output;
+
+        const outputs = Array.isArray(helpOutput) ? helpOutput : [helpOutput || ""];
+        const newLines: OutputLine[] = outputs.map((out, idx) => ({
+          id: `${Date.now()}-help-${idx}-${Math.random().toString(36).slice(2, 6)}`,
+          text: out,
+          kind: out.includes("Comandos disponíveis") ? "success" : "output",
+        }));
+
+        setOutput((prev) => [...prev, ...newLines]);
+        setCompleted(true);
+        return;
+      }
+
+      if (matchedCmd) {
+        const cmdConfig = Array.isArray(matchedCmd)
+          ? { output: matchedCmd, steps: undefined }
+          : matchedCmd;
+
+        const cmdSteps =
+          cmdConfig.steps && cmdConfig.steps.length > 0
+            ? cmdConfig.steps
+            : steps && steps.length > 0
+              ? steps
+              : undefined;
+
+        const cmdOutput = cmdConfig.output ?? finalMessage;
+
+        if (cmdSteps && cmdSteps.length > 0) {
+          runCustomSteps(cmdSteps, cmdOutput);
+          return;
+        }
+
+        if (cmdOutput) {
+          const outputs = Array.isArray(cmdOutput) ? cmdOutput : [cmdOutput];
+          const newLines: OutputLine[] = outputs.map((out, idx) => {
+            const isSuccess =
+              out.includes("ORDER COMPLETE") ||
+              out.includes("DEV PROFILE LOADED") ||
+              out.includes("successfully") ||
+              out.includes("Comandos disponíveis");
+            return {
+              id: `${Date.now()}-out-${idx}-${Math.random().toString(36).slice(2, 6)}`,
+              text: out,
+              kind: isSuccess ? "success" : "output",
+            };
+          });
+          setOutput((prev) => [...prev, ...newLines]);
+          setCompleted(true);
+          return;
+        }
+      }
+
+      if (steps && steps.length > 0 && lower === command.toLowerCase()) {
         runCustomSteps(steps, finalMessage);
-        return;
-      }
-
-      if (BUILTIN_COMMANDS[lower]) {
-        setOutput((prev) => [...prev, ...BUILTIN_COMMANDS[lower]]);
-        setCompleted(true);
         return;
       }
 
       setOutput((prev) => [
         ...prev,
-        `zsh: comando não encontrado: ${trimmed}. Digite 'help' para ver os comandos.`,
+        {
+          id: `${Date.now()}-err-${Math.random().toString(36).slice(2, 6)}`,
+          text: `zsh: comando não encontrado: ${trimmed}. Digite 'help' para ver os comandos.`,
+          kind: "error",
+        },
       ]);
       setCompleted(true);
     },
-    [promptSymbol, steps, command, finalMessage, runCustomSteps],
+    [steps, command, finalMessage, commands, runCustomSteps],
   );
 
   useEffect(() => {
@@ -284,24 +480,10 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
   };
 
   const status = busy
-    ? { label: "executando", color: "bg-amber-500" }
+    ? { label: "Executando", color: "bg-amber-500" }
     : completed
       ? { label: "success", color: "bg-emerald-500" }
       : { label: "cold", color: "bg-zinc-400" };
-
-  const lineKind = (line: string) => {
-    if (line.startsWith(promptSymbol)) return "command" as const;
-    if (
-      line.includes("ORDER COMPLETE") ||
-      line.includes("successfully") ||
-      line.includes("Comandos disponíveis")
-    )
-      return "success" as const;
-    return "step" as const;
-  };
-
-  const buttonClasses =
-    "flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs text-black/60 transition-colors hover:bg-black/10 hover:text-black";
 
   return (
     <div
@@ -386,11 +568,11 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
           )}
 
           <AnimatePresence initial={false}>
-            {output.map((line, index) => {
-              const kind = lineKind(line);
+            {output.map((item) => {
+              const kind = item.kind;
               return (
                 <motion.div
-                  key={`${index}-${line.slice(0, 10)}`}
+                  key={item.id}
                   initial={{ opacity: 0, x: -4 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.15 }}
@@ -401,8 +583,12 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
                       <ChevronRight className={cn("h-3.5 w-3.5", t.accentText)} />
                     ) : kind === "success" ? (
                       <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
+                    ) : kind === "error" ? (
+                      <Circle className="h-1.5 w-1.5 translate-y-1.5 text-rose-500 fill-rose-500" />
+                    ) : kind === "step" ? (
+                      <Circle className="h-1.5 w-1.5 translate-y-1.5 text-black/40 fill-black/20" />
                     ) : (
-                      <Circle className="h-1.5 w-1.5 translate-y-1.5 text-black/20" />
+                      <span className="inline-block w-3.5" />
                     )}
                   </span>
                   <pre
@@ -410,12 +596,12 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
                       "whitespace-pre-wrap break-words font-mono text-xs sm:text-sm",
                       kind === "command" && "font-semibold text-zinc-900",
                       kind === "step" && "text-zinc-600",
+                      kind === "output" && "text-zinc-800",
                       kind === "success" && "font-medium text-emerald-600",
+                      kind === "error" && "font-medium text-rose-600",
                     )}
                   >
-                    {kind === "command"
-                      ? line.replace(new RegExp(`^\\${promptSymbol}\\s?`), "")
-                      : line}
+                    {item.text}
                   </pre>
                 </motion.div>
               );
@@ -425,7 +611,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
           {busy && !typing && (
             <div className="flex items-center gap-2 text-xs text-black/50 py-1">
               <Loader2 className="h-3.5 w-3.5 animate-spin text-emerald-500" />
-              executando…
+              Executando…
             </div>
           )}
 

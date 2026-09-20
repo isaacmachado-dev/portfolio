@@ -1,8 +1,8 @@
 ---
-import InteractiveTerminal from "@/components/ui/terminal";
 import GithubContributions from "@/pages/sections/fundamentos/components/GithubContributions";
 import TimelineAutoScroll from "@/pages/sections/fundamentos/components/TimelineAutoScroll";
 import FundamentosFrame from "./components/FundamentosFrameContainer.astro";
+import { InteractiveTerminal } from "./components/Terminal";
 
 let contributions = [];
 try {
@@ -46,8 +46,7 @@ try {
                     <InteractiveTerminal 
                         client:load 
                         className="h-full w-full" 
-                        title="isaac@arch"
-                        inputPlaceholder="Escreva o comando.." 
+                        title="isaac@arch",
                     />
                 </FundamentosFrame>
             </div>
