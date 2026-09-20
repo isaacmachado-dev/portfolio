@@ -126,7 +126,7 @@ export const DEFAULT_COMMANDS: Record<string, CommandConfig> = {
       "Compilando perfil de desenvolvedor...",
     ],
     output: [
-      "Perfil DEV carregado! ✨",
+      "PERFIL DEV CARREGADO: ",
       "Isaac Machado — Engenheiro de Computação & Full-Stack Developer",
       "- Cristão",
       "- Capaz de criar aplicações multiplataformas completas",
@@ -142,7 +142,7 @@ export const DEFAULT_COMMANDS: Record<string, CommandConfig> = {
       "Compiling developer profile...",
     ],
     output: [
-      "DEV Profile loaded! ✨",
+      "DEV PROFILE LOADED: ",
       "Isaac Machado — Computer Engineer & Full-Stack Developer",
       "- Christian",
       "- Capable of creating cross-platform applications",
@@ -286,7 +286,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
                 out.includes("PEDIDO FINALIZADO") ||
                 out.includes("Informações do sistema carregadas") ||
                 out.includes("ORDER COMPLETE") ||
-                out.includes("Perfil DEV carregado") ||
+                out.includes("PERFIL DEV CARREGADO") ||
                 out.includes("DEV PROFILE LOADED") ||
                 out.includes("successfully") ||
                 out.includes("Comandos disponíveis");
