@@ -42,7 +42,7 @@ export function FundamentosTerminal(props: TerminalProps) {
     <InteractiveTerminal
       title="isaac@arch"
       inputPlaceholder="Escreva o comando..)"
-      stepDelay={400}
+      stepDelay={5000}
       {...props}
     />
   );

@@ -176,7 +176,7 @@ export const DEFAULT_COMMANDS: Record<string, CommandConfig> = {
     ],
     output: [
       "ORDER COMPLETE! ☕",
-      "Your perfect latte is ready:",
+      "Your perfect coffee is ready:",
       "- Coffee pilão already sweetened",
       "Enjoy your coffee and have a wonderful day!",
     ],
@@ -192,7 +192,7 @@ export const DEFAULT_COMMANDS: Record<string, CommandConfig> = {
     ],
     output: [
       "☕ ORDER COMPLETE! ☕",
-      "Your perfect latte is ready:",
+      "Your perfect coffee is ready:",
       "- Coffee pilão already sweetened",
       "Enjoy your coffee and have a wonderful day!",
     ],
@@ -214,7 +214,7 @@ const InteractiveTerminal: React.FC<TerminalProps> = ({
   steps,
   finalMessage,
   commands,
-  stepDelay = 500,
+  stepDelay = 2000,
   typingDelay = 80,
   icon = <TerminalIcon className="h-4 w-4" />,
   promptSymbol = ">",
