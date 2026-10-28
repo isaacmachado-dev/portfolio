@@ -155,55 +155,6 @@ export default function sectionTransition01(scopeOrConfig = document, maybeConfi
 
       if (y === 0 && opacity === null) return;
 
-      let isAutoAdvancing = false;
-
-      const triggerAdvanceToBottom = () => {
-        if (isAutoAdvancing) return;
-        isAutoAdvancing = true;
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: "smooth",
-        });
-        setTimeout(() => {
-          isAutoAdvancing = false;
-        }, 1000);
-      };
-
-      // Detecta a próxima ação de scroll a partir do momento em que o usuário está no último projeto
-      const handleNextActionIntent = (e) => {
-        if (!config.autoAdvance || isAutoAdvancing) return;
-        const maxScroll = previousSection.offsetTop + previousSection.offsetHeight - window.innerHeight;
-        const currentY = window.scrollY;
-
-        if (currentY >= maxScroll - 120 && currentY <= maxScroll + 60) {
-          if (e.deltaY > 3) {
-            triggerAdvanceToBottom();
-          }
-        }
-      };
-
-      let touchStartY = 0;
-      const handleTouchStart = (e) => {
-        touchStartY = e.touches[0].clientY;
-      };
-
-      const handleTouchMove = (e) => {
-        if (!config.autoAdvance || isAutoAdvancing) return;
-        const maxScroll = previousSection.offsetTop + previousSection.offsetHeight - window.innerHeight;
-        const currentY = window.scrollY;
-        const delta = touchStartY - e.touches[0].clientY;
-
-        if (currentY >= maxScroll - 120 && currentY <= maxScroll + 60) {
-          if (delta > 8) {
-            triggerAdvanceToBottom();
-          }
-        }
-      };
-
-      window.addEventListener("wheel", handleNextActionIntent, { passive: true });
-      window.addEventListener("touchstart", handleTouchStart, { passive: true });
-      window.addEventListener("touchmove", handleTouchMove, { passive: true });
-
       if (typeof ResizeObserver !== "undefined") {
         let refreshTimeout;
         const ro = new ResizeObserver(() => {
@@ -223,24 +174,14 @@ export default function sectionTransition01(scopeOrConfig = document, maybeConfi
           scrub: 0.5,
           snap: {
             snapTo: (progress, self) => {
-              if (self.direction === 1 && progress > 0.02) return 1;
+              // Snap simétrico para advance e back na mesma velocidade/sensibilidade
+              if (self.direction === 1 && progress > 0.25) return 1;
               if (self.direction === -1 && progress < 0.75) return 0;
               return progress;
             },
             duration: { min: 0.4, max: 0.8 },
             delay: 0.02,
             ease: "power2.out",
-          },
-          onUpdate: (self) => {
-            if (
-              config.autoAdvance &&
-              !isAutoAdvancing &&
-              self.direction === 1 &&
-              self.progress > 0.02 &&
-              self.progress < 0.95
-            ) {
-              triggerAdvanceToBottom();
-            }
           },
         },
       });

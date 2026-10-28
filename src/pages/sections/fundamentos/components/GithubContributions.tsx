@@ -18,10 +18,10 @@ export default function GithubContributions({
   const [loading, setLoading] = useState(!data);
 
   useEffect(() => {
-    if (data && data.length > 0) return;
-
     let ignore = false;
-    setLoading(true);
+    if (!data) {
+      setLoading(true);
+    }
 
     fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
       .then((res) => {
@@ -29,7 +29,7 @@ export default function GithubContributions({
         return res.json();
       })
       .then((json) => {
-        if (!ignore && json.contributions) {
+        if (!ignore && json.contributions && json.contributions.length > 0) {
           setData(json.contributions);
         }
       })
@@ -43,7 +43,7 @@ export default function GithubContributions({
     return () => {
       ignore = true;
     };
-  }, [username, data]);
+  }, [username]);
 
   if (loading && !data) {
     return (
